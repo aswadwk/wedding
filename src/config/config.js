@@ -1,10 +1,10 @@
 const config = {
   data: {
-    title: import.meta.env.VITE_TITLE || "Pernikahan Meilani & Riki",
+    title: import.meta.env.VITE_TITLE || "Pernikahan Fulan & Fulana",
     description:
       import.meta.env.VITE_DESCRIPTION || "Kami akan menikah dan mengundang Anda untuk turut merayakan momen istimewa ini.",
-    groomName: import.meta.env.VITE_GROOM_NAME || "Riki",
-    brideName: import.meta.env.VITE_BRIDE_NAME || "Meilani",
+    groomName: import.meta.env.VITE_GROOM_NAME || "Fulan",
+    brideName: import.meta.env.VITE_BRIDE_NAME || "Fulana",
     parentGroom: import.meta.env.VITE_PARENT_GROOM || "Bapak Groom & Ibu Groom",
     parentBride: import.meta.env.VITE_PARENT_BRIDE || "Bapak Bride & Ibu Bride",
     date: import.meta.env.VITE_DATE || "2025-05-15",
