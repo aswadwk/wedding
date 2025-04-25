@@ -13,8 +13,9 @@ import {
     XCircle,
     HelpCircle,
 } from 'lucide-react'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { formatEventDate } from '@/lib/formatEventDate';
+import { supabase } from '@/lib/supabase';
 
 export default function Wishes() {
     const [showConfetti, setShowConfetti] = useState(false);
@@ -22,6 +23,7 @@ export default function Wishes() {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [attendance, setAttendance] = useState('');
     const [isOpen, setIsOpen] = useState(false);
+    const [name, setName] = useState('');
 
     const options = [
         { value: 'ATTENDING', label: 'Ya, saya akan hadir' },
@@ -53,24 +55,45 @@ export default function Wishes() {
         }
     ]);
 
+    useEffect(() => {
+        // Ambil wishes dari Supabase saat komponen mount
+        const fetchWishes = async () => {
+            const { data, error } = await supabase
+                .from('wishes')
+                .select('*')
+                .order('timestamp', { ascending: false });
+            if (!error && data) {
+                setWishes(data);
+            }
+        };
+        fetchWishes();
+    }, []);
+
     const handleSubmitWish = async (e) => {
         e.preventDefault();
-        if (!newWish.trim()) return;
+        if (!newWish.trim() || !name.trim() || !attendance) return;
 
         setIsSubmitting(true);
-        // Simulating API call
-        await new Promise(resolve => setTimeout(resolve, 1000));
-
-        const newWishObj = {
-            id: wishes.length + 1,
-            name: "Guest", // Replace with actual user name
-            message: newWish,
-            attend: "attending",
-            timestamp: new Date().toISOString()
-        };
-
-        setWishes(prev => [newWishObj, ...prev]);
+        // Simpan ke Supabase
+        const { data, error } = await supabase.from('wishes').insert([
+            {
+                name,
+                message: newWish,
+                attending: attendance,
+                timestamp: new Date().toISOString(),
+            },
+        ]).select();
+        if (error) {
+            alert('Gagal mengirim ucapan.');
+            setIsSubmitting(false);
+            return;
+        }
+        if (data && data[0]) {
+            setWishes(prev => [data[0], ...prev]);
+        }
         setNewWish('');
+        setName('');
+        setAttendance('');
         setIsSubmitting(false);
         setShowConfetti(true);
         setTimeout(() => setShowConfetti(false), 3000);
@@ -88,21 +111,21 @@ export default function Wishes() {
         }
     };
     return (<>
-        <section id="wishes" className="min-h-screen relative overflow-hidden">
+        <section id="wishes" className="relative min-h-screen overflow-hidden">
             {showConfetti && <Confetti recycle={false} numberOfPieces={200} />}
-            <div className="container mx-auto px-4 py-20 relative z-10">
+            <div className="container relative z-10 px-4 py-20 mx-auto">
                 {/* Section Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
-                    className="text-center space-y-4 mb-16"
+                    className="mb-16 space-y-4 text-center"
                 >
                     <motion.span
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2 }}
-                        className="inline-block text-rose-500 font-medium"
+                        className="inline-block font-medium text-rose-500"
                     >
                         Kirimkan Doa dan Harapan Terbaik Anda
                     </motion.span>
@@ -111,7 +134,7 @@ export default function Wishes() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.3 }}
-                        className="text-4xl md:text-5xl font-serif text-gray-800"
+                        className="font-serif text-4xl text-gray-800 md:text-5xl"
                     >
                         Pesan dan Doa
                     </motion.h2>
@@ -148,12 +171,12 @@ export default function Wishes() {
                                     <div className="absolute inset-0 bg-gradient-to-r from-rose-100/50 to-pink-100/50 rounded-xl transform transition-transform group-hover:scale-[1.02] duration-300" />
 
                                     {/* Card content */}
-                                    <div className="relative backdrop-blur-sm bg-white/80 p-4 rounded-xl border border-rose-100/50 shadow-md">
+                                    <div className="relative p-4 border shadow-md backdrop-blur-sm bg-white/80 rounded-xl border-rose-100/50">
                                         {/* Header */}
-                                        <div className="flex items-start space-x-3 mb-2">
+                                        <div className="flex items-start mb-2 space-x-3">
                                             {/* Avatar */}
                                             <div className="flex-shrink-0">
-                                                <div className="w-8 h-8 rounded-full bg-gradient-to-r from-rose-400 to-pink-400 flex items-center justify-center text-white text-sm font-medium">
+                                                <div className="flex items-center justify-center w-8 h-8 text-sm font-medium text-white rounded-full bg-gradient-to-r from-rose-400 to-pink-400">
                                                     {wish.name[0].toUpperCase()}
                                                 </div>
                                             </div>
@@ -161,12 +184,12 @@ export default function Wishes() {
                                             {/* Name, Time, and Attendance */}
                                             <div className="flex-1 min-w-0">
                                                 <div className="flex items-center space-x-2">
-                                                    <h4 className="font-medium text-gray-800 text-sm truncate">
+                                                    <h4 className="text-sm font-medium text-gray-800 truncate">
                                                         {wish.name}
                                                     </h4>
                                                     {getAttendanceIcon(wish.attending)}
                                                 </div>
-                                                <div className="flex items-center space-x-1 text-gray-500 text-xs">
+                                                <div className="flex items-center space-x-1 text-xs text-gray-500">
                                                     <Clock className="w-3 h-3" />
                                                     <time className="truncate">
                                                         {formatEventDate(wish.timestamp)}
@@ -176,14 +199,14 @@ export default function Wishes() {
                                         </div>
 
                                         {/* Message */}
-                                        <p className="text-gray-600 text-sm leading-relaxed mb-2 line-clamp-3">
+                                        <p className="mb-2 text-sm leading-relaxed text-gray-600 line-clamp-3">
                                             {wish.message}
                                         </p>
 
                                         {/* Optional: Time indicator for recent messages */}
                                         {Date.now() - new Date(wish.timestamp).getTime() < 3600000 && (
                                             <div className="absolute top-2 right-2">
-                                                <span className="px-2 py-1 rounded-full bg-rose-100 text-rose-600 text-xs font-medium">
+                                                <span className="px-2 py-1 text-xs font-medium rounded-full bg-rose-100 text-rose-600">
                                                     New
                                                 </span>
                                             </div>
@@ -202,11 +225,11 @@ export default function Wishes() {
                     className="max-w-2xl mx-auto mt-12"
                 >
                     <form onSubmit={handleSubmitWish} className="relative">
-                        <div className="backdrop-blur-sm bg-white/80 p-6 rounded-2xl border border-rose-100/50 shadow-lg">
+                        <div className="p-6 border shadow-lg backdrop-blur-sm bg-white/80 rounded-2xl border-rose-100/50">
                             <div className='space-y-2'>
                                 {/* Name Input */}
                                 <div className="space-y-2">
-                                    <div className="flex items-center space-x-2 text-gray-500 text-sm mb-1">
+                                    <div className="flex items-center mb-1 space-x-2 text-sm text-gray-500">
                                         <User className="w-4 h-4" />
                                         <span>Nama Kamu</span>
                                     </div>
@@ -215,15 +238,17 @@ export default function Wishes() {
                                         placeholder="Masukan nama kamu..."
                                         className="w-full px-4 py-2.5 rounded-xl bg-white/50 border border-rose-100 focus:border-rose-300 focus:ring focus:ring-rose-200 focus:ring-opacity-50 transition-all duration-200 text-gray-700 placeholder-gray-400"
                                         required
+                                        value={name}
+                                        onChange={e => setName(e.target.value)}
                                     />
                                 </div>
                                 <motion.div
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: 0.1 }}
-                                    className="space-y-2 relative"
+                                    className="relative space-y-2"
                                 >
-                                    <div className="flex items-center space-x-2 text-gray-500 text-sm mb-1">
+                                    <div className="flex items-center mb-1 space-x-2 text-sm text-gray-500">
                                         <Calendar className="w-4 h-4" />
                                         <span>Apakah kamu hadir?</span>
                                     </div>
@@ -252,7 +277,7 @@ export default function Wishes() {
                                                 initial={{ opacity: 0, y: -10 }}
                                                 animate={{ opacity: 1, y: 0 }}
                                                 exit={{ opacity: 0, y: -10 }}
-                                                className="absolute z-10 w-full mt-1 bg-white rounded-xl shadow-lg border border-rose-100 overflow-hidden"
+                                                className="absolute z-10 w-full mt-1 overflow-hidden bg-white border shadow-lg rounded-xl border-rose-100"
                                             >
                                                 {options.map((option) => (
                                                     <motion.button
@@ -278,14 +303,16 @@ export default function Wishes() {
                                 </motion.div>
                                 {/* Wish Textarea */}
                                 <div className="space-y-2">
-                                    <div className="flex items-center space-x-2 text-gray-500 text-sm mb-1">
+                                    <div className="flex items-center mb-1 space-x-2 text-sm text-gray-500">
                                         <MessageCircle className="w-4 h-4" />
                                         <span>Harapan kamu</span>
                                     </div>
                                     <textarea
                                         placeholder="Kirimkan harapan dan doa untuk kedua mempelai..."
-                                        className="w-full h-32 p-4 rounded-xl bg-white/50 border border-rose-100 focus:border-rose-300 focus:ring focus:ring-rose-200 focus:ring-opacity-50 resize-none transition-all duration-200"
+                                        className="w-full h-32 p-4 transition-all duration-200 border resize-none rounded-xl bg-white/50 border-rose-100 focus:border-rose-300 focus:ring focus:ring-rose-200 focus:ring-opacity-50"
                                         required
+                                        value={newWish}
+                                        onChange={e => setNewWish(e.target.value)}
                                     />
                                 </div>
                             </div>
