@@ -22,6 +22,8 @@ import MainContent from '@/pages/MainContent';
 import LandingPage from '@/pages/LandingPage';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import config from '@/config/config';
+import { Routes, Route } from 'react-router-dom';
+import GenerateInvitation from '@/pages/GenerateInvitation';
 
 /**
  * App component serves as the root of the application.
@@ -72,16 +74,20 @@ function App() {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="theme-color" content="#FDA4AF" /> {/* Rose-300 color */}
       </Helmet>
-
-      <AnimatePresence mode='wait'>
-        {!isInvitationOpen ? (
-          <LandingPage onOpenInvitation={() => setIsInvitationOpen(true)} />
-        ) : (
-          <Layout>
-            <MainContent />
-          </Layout>
-        )}
-      </AnimatePresence>
+      <Routes>
+        <Route path="/" element={
+          <AnimatePresence mode='wait'>
+            {!isInvitationOpen ? (
+              <LandingPage onOpenInvitation={() => setIsInvitationOpen(true)} />
+            ) : (
+              <Layout>
+                <MainContent />
+              </Layout>
+            )}
+          </AnimatePresence>
+        } />
+        <Route path="/generate" element={<GenerateInvitation />} />
+      </Routes>
     </HelmetProvider>
   );
 }
