@@ -14,8 +14,8 @@ const config = {
     time: import.meta.env.VITE_TIME || "16:16 - 17:30 WIB",
     location: import.meta.env.VITE_LOCATION || "Grand Ballroom, Hotel Majesty",
     address: import.meta.env.VITE_ADDRESS || "Jl. Jend. Sudirman No.1, Jakarta",
-    ogImage: import.meta.env.VITE_OG_IMAGE || "/images/og-image.jpg",
-    favicon: import.meta.env.VITE_FAVICON || "/images/favicon.ico",
+    ogImage: import.meta.env.VITE_OG_IMAGE || "images/og-image.jpg",
+    favicon: import.meta.env.VITE_FAVICON || "favicon.ico",
     agenda: [
       {
         title: import.meta.env.VITE_AGENDA1_TITLE || "Akad Nikah",
