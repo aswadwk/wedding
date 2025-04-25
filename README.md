@@ -5,13 +5,17 @@
 A modern, interactive wedding invitation website built with Vite (React), Tailwind CSS, and Framer Motion. Created by [@mrofisr](https://github.com/mrofisr).
 
 ## Features
+
 - Modern design & smooth animations
 - Fully responsive & mobile-first layout
 - Background music & interactive wishes (WIP)
 - Fun confetti effects and countdown timer
 - Google Maps integration
+- Generate Link Invitation
+- Update wedding details easily with environment variables
 
 ## Tech Stack
+
 - [Vite (React)](https://vite.dev/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Framer Motion](https://www.framer.com/motion/)
@@ -19,21 +23,28 @@ A modern, interactive wedding invitation website built with Vite (React), Tailwi
 - [React Confetti](https://www.npmjs.com/package/react-confetti)
 
 ## Installation
+
 1. Clone the repository and install dependencies:
-  ```bash
-  git clone https://github.com/mrofisr/wedding-invitation.git
-  cd wedding-invitation
-  bun install
-  ```
+
+```bash
+git clone https://github.com/mrofisr/wedding-invitation.git
+cd wedding-invitation
+bun install
+```
+
 2. Update your wedding details in `src/config.js`.
 3. Start the development server:
-  ```bash
-  bun run dev
-  ```
-  Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+```bash
+bun run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## Customization
+
 Edit `src/config.js` to change details like the wedding title, names, and colors. For example:
+
 ```JavaScript
 const config = {
   data: {
@@ -99,14 +110,16 @@ export default config;
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?s=https://github.com/mrofisr/islamic-wedding-invitation)
 
 ## License
+
 This project is licensed under the [Apache License 2.0](https://opensource.org/licenses/Apache-2.0). You can use, modify, and distribute it as long as you include the original copyright notice and license.
 
 ## Contributing & Support
+
 Contributions and issue reports are welcome. If this project helped you, give it a ⭐️!
 
 ## Contact
+
 - GitHub: [@mrofisr](https://github.com/mrofisr)
 - Instagram: [@mrofisr](https://instagram.com/mrofisr)
 
 May Allah guide us all.
-
