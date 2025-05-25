@@ -1,2 +1,22 @@
+# Allow all crawlers access to all content
 User-agent: *
-Disallow: /
+Allow: /
+
+# Specifically allow social media crawlers
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: TelegramBot
+Allow: /
+
+# Sitemap location
+Sitemap: https://my-wedding-sooty.vercel.app/sitemap.xml
