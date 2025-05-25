@@ -57,25 +57,25 @@ function App() {
 
           {/* Open Graph / Facebook */}
           <meta property="og:type" content="website" />
-          <meta property="og:url" content={window.location.href} />
+          <meta property="og:url" content="https://my-wedding-sooty.vercel.app/" />
           <meta property="og:title" content={config.data.title} />
           <meta property="og:description" content={config.data.description} />
-          <meta property="og:image" content={`${window.location.origin}/${config.data.ogImage}`} />
+          <meta property="og:image" content="https://my-wedding-sooty.vercel.app/images/og-image.jpg" />
           <meta property="og:image:width" content="1200" />
           <meta property="og:image:height" content="630" />
           <meta property="og:image:type" content="image/jpeg" />
+          <meta property="og:image:alt" content={`${config.data.groomName} & ${config.data.brideName} Wedding Invitation`} />
           <meta property="og:site_name" content={config.data.title} />
           <meta property="og:locale" content="id_ID" />
 
           {/* Twitter */}
           <meta property="twitter:card" content="summary_large_image" />
-          <meta property="twitter:url" content={window.location.href} />
+          <meta property="twitter:url" content="https://my-wedding-sooty.vercel.app/" />
           <meta property="twitter:title" content={config.data.title} />
           <meta property="twitter:description" content={config.data.description} />
-          <meta property="twitter:image" content={`${window.location.origin}/${config.data.ogImage}`} />
+          <meta property="twitter:image" content="https://my-wedding-sooty.vercel.app/images/og-image.jpg" />
 
           {/* WhatsApp and Social Media Optimization */}
-          <meta property="og:image:alt" content={`${config.data.groomName} & ${config.data.brideName} Wedding Invitation`} />
           <meta name="author" content={`${config.data.groomName} & ${config.data.brideName}`} />
           <meta name="robots" content="index, follow" />
 
