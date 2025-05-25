@@ -12,6 +12,7 @@ import {
   Calendar as CalendarIcon
 } from 'lucide-react';
 import { formatEventDate } from '@/lib/formatEventDate';
+import PropTypes from 'prop-types';
 
 const Modal = ({ isOpen, onClose, children }) => {
   return (
@@ -31,7 +32,7 @@ const Modal = ({ isOpen, onClose, children }) => {
             exit={{ opacity: 0, y: 20 }}
             className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[70] w-[90%] max-w-sm"
           >
-            <div className="bg-white transform -translate-x-1/2 -translate-y-1/2 rounded-2xl p-6 shadow-2xl border border-gray-100">
+            <div className="bg-white dark:bg-gray-800 transform -translate-x-1/2 -translate-y-1/2 rounded-2xl p-6 shadow-2xl border border-gray-100 dark:border-gray-700 transition-colors duration-300">
               {children}
             </div>
           </motion.div>
@@ -44,12 +45,12 @@ const Modal = ({ isOpen, onClose, children }) => {
 const CalendarButton = ({ icon: Icon, label, onClick, className = "" }) => (
   <motion.button
     onClick={onClick}
-    className={`flex items-center space-x-3 w-full p-4 rounded-xl border border-gray-200 hover:bg-gray-50 transition-colors ${className}`}
+    className={`flex items-center space-x-3 w-full p-4 rounded-xl border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors ${className}`}
     whileHover={{ scale: 1.02 }}
     whileTap={{ scale: 0.98 }}
   >
     <Icon className="w-5 h-5" />
-    <span className="text-gray-700 font-medium">{label}</span>
+    <span className="text-gray-700 dark:text-gray-200 font-medium">{label}</span>
   </motion.button>
 );
 
@@ -132,33 +133,33 @@ END:VCALENDAR`;
   return (
     <div className="relative">
       <motion.div
-        className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 space-y-4"
+        className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-700 space-y-4 transition-colors duration-300"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
         <div className="flex justify-between items-center">
-          <h3 className="text-xl font-semibold text-gray-800">{eventData.title.split(' - ')[0]}</h3>
+          <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-100 transition-colors duration-300">{eventData.title.split(' - ')[0]}</h3>
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="text-rose-500 hover:text-rose-600 transition-colors"
+            className="text-rose-500 hover:text-rose-600 dark:text-rose-400 dark:hover:text-rose-300 transition-colors"
             onClick={() => setShowCalendarModal(true)}
           >
             <CalendarPlus className="w-5 h-5" />
           </motion.button>
         </div>
-        <div className="space-y-3 text-gray-600">
+        <div className="space-y-3 text-gray-600 dark:text-gray-300 transition-colors duration-300">
           <div className="flex items-center space-x-3">
-            <Calendar className="w-5 h-5 text-rose-500" />
+            <Calendar className="w-5 h-5 text-rose-500 dark:text-rose-400" />
             <span>{formatEventDate(eventData.date)}</span>
           </div>
           <div className="flex items-center space-x-3">
-            <Clock className="w-5 h-5 text-rose-500" />
+            <Clock className="w-5 h-5 text-rose-500 dark:text-rose-400" />
             <span>{eventData.startTime} - {eventData.endTime} WIB</span>
           </div>
           <div className="flex items-center space-x-3">
-            <MapPin className="w-5 h-5 text-rose-500" />
+            <MapPin className="w-5 h-5 text-rose-500 dark:text-rose-400" />
             <span>{eventData.location}</span>
           </div>
         </div>
@@ -170,12 +171,12 @@ END:VCALENDAR`;
       >
         <div className="space-y-6 ">
           <div className="flex justify-between  items-center">
-            <h3 className="text-xl font-semibold text-gray-800">Add to Calendar</h3>
+            <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-100 transition-colors duration-300">Add to Calendar</h3>
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               onClick={() => setShowCalendarModal(false)}
-              className="text-gray-500 hover:text-gray-700"
+              className="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors duration-300"
             >
               <X className="w-5 h-5" />
             </motion.button>
@@ -215,6 +216,36 @@ const EventCards = ({ events }) => {
       ))}
     </div>
   );
+};
+
+// PropTypes for components
+Modal.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  children: PropTypes.node.isRequired,
+};
+
+CalendarButton.propTypes = {
+  icon: PropTypes.elementType.isRequired,
+  label: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+  className: PropTypes.string,
+};
+
+SingleEventCard.propTypes = {
+  eventData: PropTypes.shape({
+    date: PropTypes.string.isRequired,
+    startTime: PropTypes.string.isRequired,
+    endTime: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    location: PropTypes.string.isRequired,
+    timeZone: PropTypes.string.isRequired,
+  }).isRequired,
+};
+
+EventCards.propTypes = {
+  events: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default EventCards;

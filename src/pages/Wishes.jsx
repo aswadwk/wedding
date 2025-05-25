@@ -88,7 +88,7 @@ export default function Wishes() {
             setIsSubmitting(false);
             return;
         }
-        if (data && data[0]) {
+        if (data?.[0]) {
             setWishes(prev => [data[0], ...prev]);
         }
         setNewWish('');
@@ -111,7 +111,7 @@ export default function Wishes() {
         }
     };
     return (<>
-        <section id="wishes" className="relative min-h-screen overflow-hidden">
+        <section id="wishes" className="relative min-h-screen overflow-hidden bg-gradient-to-br from-yellow-50/50 to-green-50/50 dark:from-gray-900/50 dark:to-gray-800/50 transition-colors duration-300">
             {showConfetti && <Confetti recycle={false} numberOfPieces={200} />}
             <div className="container relative z-10 px-4 py-20 mx-auto">
                 {/* Section Header */}
@@ -125,7 +125,7 @@ export default function Wishes() {
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2 }}
-                        className="inline-block font-medium text-rose-500"
+                        className="inline-block font-medium text-rose-500 dark:text-rose-400 transition-colors duration-300"
                     >
                         Kirimkan Doa dan Harapan Terbaik Anda
                     </motion.span>
@@ -134,7 +134,7 @@ export default function Wishes() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.3 }}
-                        className="font-serif text-4xl text-gray-800 md:text-5xl"
+                        className="font-serif text-4xl text-gray-800 dark:text-gray-100 md:text-5xl transition-colors duration-300"
                     >
                         Pesan dan Doa
                     </motion.h2>
@@ -146,9 +146,9 @@ export default function Wishes() {
                         transition={{ delay: 0.4 }}
                         className="flex items-center justify-center gap-4 pt-4"
                     >
-                        <div className="h-[1px] w-12 bg-rose-200" />
+                        <div className="h-[1px] w-12 bg-rose-200 dark:bg-gray-600 transition-colors duration-300" />
                         <MessageCircle className="w-5 h-5 text-rose-400" />
-                        <div className="h-[1px] w-12 bg-rose-200" />
+                        <div className="h-[1px] w-12 bg-rose-200 dark:bg-gray-600 transition-colors duration-300" />
                     </motion.div>
                 </motion.div>
 
@@ -168,10 +168,10 @@ export default function Wishes() {
                                     className="group relative w-[280px]"
                                 >
                                     {/* Background gradient */}
-                                    <div className="absolute inset-0 bg-gradient-to-r from-rose-100/50 to-pink-100/50 rounded-xl transform transition-transform group-hover:scale-[1.02] duration-300" />
+                                    <div className="absolute inset-0 bg-gradient-to-r from-rose-100/50 dark:from-rose-900/20 to-pink-100/50 dark:to-pink-900/20 rounded-xl transform transition-transform group-hover:scale-[1.02] duration-300" />
 
                                     {/* Card content */}
-                                    <div className="relative p-4 border shadow-md backdrop-blur-sm bg-white/80 rounded-xl border-rose-100/50">
+                                    <div className="relative p-4 border shadow-md backdrop-blur-sm bg-white/80 dark:bg-gray-800/80 rounded-xl border-rose-100/50 dark:border-gray-700/50 transition-colors duration-300">
                                         {/* Header */}
                                         <div className="flex items-start mb-2 space-x-3">
                                             {/* Avatar */}
@@ -184,12 +184,12 @@ export default function Wishes() {
                                             {/* Name, Time, and Attendance */}
                                             <div className="flex-1 min-w-0">
                                                 <div className="flex items-center space-x-2">
-                                                    <h4 className="text-sm font-medium text-gray-800 truncate">
+                                                    <h4 className="text-sm font-medium text-gray-800 dark:text-gray-100 truncate transition-colors duration-300">
                                                         {wish.name}
                                                     </h4>
                                                     {getAttendanceIcon(wish.attending)}
                                                 </div>
-                                                <div className="flex items-center space-x-1 text-xs text-gray-500">
+                                                <div className="flex items-center space-x-1 text-xs text-gray-500 dark:text-gray-400 transition-colors duration-300">
                                                     <Clock className="w-3 h-3" />
                                                     <time className="truncate">
                                                         {formatEventDate(wish.timestamp)}
@@ -199,7 +199,7 @@ export default function Wishes() {
                                         </div>
 
                                         {/* Message */}
-                                        <p className="mb-2 text-sm leading-relaxed text-gray-600 line-clamp-3">
+                                        <p className="mb-2 text-sm leading-relaxed text-gray-600 dark:text-gray-300 line-clamp-3 transition-colors duration-300">
                                             {wish.message}
                                         </p>
 
@@ -225,18 +225,18 @@ export default function Wishes() {
                     className="max-w-2xl mx-auto mt-12"
                 >
                     <form onSubmit={handleSubmitWish} className="relative">
-                        <div className="p-6 border shadow-lg backdrop-blur-sm bg-white/80 rounded-2xl border-rose-100/50">
+                        <div className="p-6 border shadow-lg backdrop-blur-sm bg-white/80 dark:bg-gray-800/80 rounded-2xl border-rose-100/50 dark:border-gray-700/50 transition-colors duration-300">
                             <div className='space-y-2'>
                                 {/* Name Input */}
                                 <div className="space-y-2">
-                                    <div className="flex items-center mb-1 space-x-2 text-sm text-gray-500">
+                                    <div className="flex items-center mb-1 space-x-2 text-sm text-gray-500 dark:text-gray-400 transition-colors duration-300">
                                         <User className="w-4 h-4" />
                                         <span>Nama Kamu</span>
                                     </div>
                                     <input
                                         type="text"
                                         placeholder="Masukan nama kamu..."
-                                        className="w-full px-4 py-2.5 rounded-xl bg-white/50 border border-rose-100 focus:border-rose-300 focus:ring focus:ring-rose-200 focus:ring-opacity-50 transition-all duration-200 text-gray-700 placeholder-gray-400"
+                                        className="w-full px-4 py-2.5 rounded-xl bg-white/50 dark:bg-gray-700/50 border border-rose-100 dark:border-gray-600 focus:border-rose-300 dark:focus:border-rose-400 focus:ring focus:ring-rose-200 dark:focus:ring-rose-300 focus:ring-opacity-50 transition-all duration-200 text-gray-700 dark:text-gray-200 placeholder-gray-400 dark:placeholder-gray-500"
                                         required
                                         value={name}
                                         onChange={e => setName(e.target.value)}
@@ -248,7 +248,7 @@ export default function Wishes() {
                                     transition={{ delay: 0.1 }}
                                     className="relative space-y-2"
                                 >
-                                    <div className="flex items-center mb-1 space-x-2 text-sm text-gray-500">
+                                    <div className="flex items-center mb-1 space-x-2 text-sm text-gray-500 dark:text-gray-400 transition-colors duration-300">
                                         <Calendar className="w-4 h-4" />
                                         <span>Apakah kamu hadir?</span>
                                     </div>
@@ -257,15 +257,15 @@ export default function Wishes() {
                                     <button
                                         type="button"
                                         onClick={() => setIsOpen(!isOpen)}
-                                        className="w-full px-4 py-2.5 rounded-xl bg-white/50 border border-rose-100 focus:border-rose-300 focus:ring focus:ring-rose-200 focus:ring-opacity-50 transition-all duration-200 text-left flex items-center justify-between"
+                                        className="w-full px-4 py-2.5 rounded-xl bg-white/50 dark:bg-gray-700/50 border border-rose-100 dark:border-gray-600 focus:border-rose-300 dark:focus:border-rose-400 focus:ring focus:ring-rose-200 dark:focus:ring-rose-300 focus:ring-opacity-50 transition-all duration-200 text-left flex items-center justify-between"
                                     >
-                                        <span className={attendance ? 'text-gray-700' : 'text-gray-400'}>
+                                        <span className={attendance ? 'text-gray-700 dark:text-gray-200' : 'text-gray-400 dark:text-gray-500'}>
                                             {attendance ?
                                                 options.find(opt => opt.value === attendance)?.label
                                                 : 'Pilih kehadiran...'}
                                         </span>
                                         <ChevronDown
-                                            className={`w-5 h-5 text-gray-400 transition-transform duration-200 ${isOpen ? 'transform rotate-180' : ''
+                                            className={`w-5 h-5 text-gray-400 dark:text-gray-500 transition-transform duration-200 ${isOpen ? 'transform rotate-180' : ''
                                                 }`}
                                         />
                                     </button>
@@ -277,7 +277,7 @@ export default function Wishes() {
                                                 initial={{ opacity: 0, y: -10 }}
                                                 animate={{ opacity: 1, y: 0 }}
                                                 exit={{ opacity: 0, y: -10 }}
-                                                className="absolute z-10 w-full mt-1 overflow-hidden bg-white border shadow-lg rounded-xl border-rose-100"
+                                                className="absolute z-10 w-full mt-1 overflow-hidden bg-white dark:bg-gray-800 border shadow-lg rounded-xl border-rose-100 dark:border-gray-700 transition-colors duration-300"
                                             >
                                                 {options.map((option) => (
                                                     <motion.button
@@ -290,8 +290,8 @@ export default function Wishes() {
                                                         whileHover={{ backgroundColor: 'rgb(255, 241, 242)' }}
                                                         className={`w-full px-4 py-2.5 text-left transition-colors
                                         ${attendance === option.value
-                                                                ? 'bg-rose-50 text-rose-600'
-                                                                : 'text-gray-700 hover:bg-rose-50'
+                                                                ? 'bg-rose-50 dark:bg-rose-900/30 text-rose-600 dark:text-rose-400'
+                                                                : 'text-gray-700 dark:text-gray-200 hover:bg-rose-50 dark:hover:bg-gray-700'
                                                             }`}
                                                     >
                                                         {option.label}
@@ -303,13 +303,13 @@ export default function Wishes() {
                                 </motion.div>
                                 {/* Wish Textarea */}
                                 <div className="space-y-2">
-                                    <div className="flex items-center mb-1 space-x-2 text-sm text-gray-500">
+                                    <div className="flex items-center mb-1 space-x-2 text-sm text-gray-500 dark:text-gray-400 transition-colors duration-300">
                                         <MessageCircle className="w-4 h-4" />
                                         <span>Harapan kamu</span>
                                     </div>
                                     <textarea
                                         placeholder="Kirimkan harapan dan doa untuk kedua mempelai..."
-                                        className="w-full h-32 p-4 transition-all duration-200 border resize-none rounded-xl bg-white/50 border-rose-100 focus:border-rose-300 focus:ring focus:ring-rose-200 focus:ring-opacity-50"
+                                        className="w-full h-32 p-4 transition-all duration-200 border resize-none rounded-xl bg-white/50 dark:bg-gray-700/50 border-rose-100 dark:border-gray-600 focus:border-rose-300 dark:focus:border-rose-400 focus:ring focus:ring-rose-200 dark:focus:ring-rose-300 focus:ring-opacity-50 text-gray-700 dark:text-gray-200 placeholder-gray-400 dark:placeholder-gray-500"
                                         required
                                         value={newWish}
                                         onChange={e => setNewWish(e.target.value)}
@@ -317,7 +317,7 @@ export default function Wishes() {
                                 </div>
                             </div>
                             <div className="flex items-center justify-between mt-4">
-                                <div className="flex items-center space-x-2 text-gray-500">
+                                <div className="flex items-center space-x-2 text-gray-500 dark:text-gray-400 transition-colors duration-300">
                                     <Smile className="w-5 h-5" />
                                     <span className="text-sm">Berikan Doa Anda</span>
                                 </div>

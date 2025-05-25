@@ -44,18 +44,18 @@ const BottomBar = () => {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, type: "spring", stiffness: 100 }}
     >
-      <div className="backdrop-blur-md bg-white/90 border border-gray-200/80 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.07)] px-4 py-2">
+      <div className="backdrop-blur-md bg-white/90 dark:bg-gray-800/90 border border-gray-200/80 dark:border-gray-700/80 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.07)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.3)] px-4 py-2 transition-colors duration-300">
         <nav className="flex justify-between items-center">
           {menuItems.map((item) => (
             <motion.a
               key={item.label}
               href={item.href}
               className={cn(
-                "flex flex-col items-center justify-center py-2 px-3 rounded-xl transition-all duration-200",
-                "hover:bg-gray-50/80",
+                "flex flex-col items-center justify-center py-2 px-3 rounded-xl transition-all duration-300",
+                "hover:bg-gray-50/80 dark:hover:bg-gray-700/50",
                 active === item.label.toLowerCase()
-                  ? "text-primary bg-primary/5"
-                  : "text-gray-600"
+                  ? "text-rose-500 dark:text-rose-400 bg-rose-50/80 dark:bg-rose-900/20"
+                  : "text-gray-600 dark:text-gray-400"
               )}
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.95 }}
@@ -63,17 +63,17 @@ const BottomBar = () => {
             >
               <item.icon
                 className={cn(
-                  "h-[18px] w-[18px] sm:h-5 sm:w-5 mb-0.5 sm:mb-1 transition-colors duration-200",
+                  "h-[18px] w-[18px] sm:h-5 sm:w-5 mb-0.5 sm:mb-1 transition-colors duration-300",
                   active === item.label.toLowerCase()
-                    ? "stroke-rose-500"
-                    : "stroke-gray-600"
+                    ? "stroke-rose-500 dark:stroke-rose-400"
+                    : "stroke-gray-600 dark:stroke-gray-400"
                 )}
               />
               <span className={cn(
-                "text-[10px] sm:text-xs font-medium transition-all duration-200 line-clamp-1",
+                "text-[10px] sm:text-xs font-medium transition-all duration-300 line-clamp-1",
                 active === item.label.toLowerCase()
-                  ? "scale-105 text-rose-500"
-                  : "scale-100"
+                  ? "scale-105 text-rose-500 dark:text-rose-400"
+                  : "scale-100 text-gray-600 dark:text-gray-400"
               )}>
                 {item.label}
               </span>

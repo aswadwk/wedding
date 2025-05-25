@@ -7,7 +7,7 @@ export default function Events() {
     return (
         <>
             {/* Event Section */}
-            <section id="event" className="min-h-screen relative overflow-hidden">
+            <section id="event" className="min-h-screen relative overflow-hidden bg-gradient-to-br from-pink-50/50 to-rose-50/50 dark:from-gray-800/50 dark:to-gray-900/50 transition-colors duration-300">
                 <motion.div
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
@@ -28,7 +28,7 @@ export default function Events() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.2 }}
-                            className="inline-block text-rose-500 font-medium mb-2"
+                            className="inline-block text-rose-500 dark:text-rose-400 font-medium mb-2 transition-colors duration-300"
                         >
                             Catat Tanggal Penting Ini
                         </motion.span>
@@ -38,7 +38,7 @@ export default function Events() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.3 }}
-                            className="text-4xl md:text-5xl font-serif text-gray-800 leading-tight"
+                            className="text-4xl md:text-5xl font-serif text-gray-800 dark:text-gray-100 leading-tight transition-colors duration-300"
                         >
                             Rangkaian Acara Pernikahan
                         </motion.h2>
@@ -48,7 +48,7 @@ export default function Events() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.4 }}
-                            className="text-gray-500 max-w-md mx-auto"
+                            className="text-gray-500 dark:text-gray-400 max-w-md mx-auto transition-colors duration-300"
                         >
                             Kami Mengundang Anda untuk Merayakan Hari Istimewa Sebagai Awal Perjalanan Cinta Kami
                         </motion.p>
@@ -61,11 +61,11 @@ export default function Events() {
                             transition={{ delay: 0.5 }}
                             className="flex items-center justify-center gap-4 mt-6"
                         >
-                            <div className="h-[1px] w-12 bg-rose-200" />
+                            <div className="h-[1px] w-12 bg-rose-200 dark:bg-gray-600 transition-colors duration-300" />
                             <div className="text-rose-400">
                                 <Heart className="w-4 h-4" fill="currentColor" />
                             </div>
-                            <div className="h-[1px] w-12 bg-rose-200" />
+                            <div className="h-[1px] w-12 bg-rose-200 dark:bg-gray-600 transition-colors duration-300" />
                         </motion.div>
                     </motion.div>
 

@@ -1,8 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Music, PauseCircle, PlayCircle } from 'lucide-react';
+import PropTypes from 'prop-types';
 import config from '@/config/config';
 import BottomBar from '@/components/BottomBar';
+import ThemeToggle from '@/components/ui/ThemeToggle';
 
 const Layout = ({ children }) => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -23,8 +25,9 @@ const Layout = ({ children }) => {
         setIsPlaying(true);
         wasPlayingRef.current = true;
         setShowToast(true);
-        setTimeout(() => setShowToast(false), 3000);
-      } catch (error) {
+        const timer = setTimeout(() => setShowToast(false), 3000);
+        return () => clearTimeout(timer);
+      } catch {
         console.log('Autoplay failed, waiting for user interaction');
         // Add click event listener for first interaction
         const handleFirstInteraction = async () => {
@@ -149,13 +152,16 @@ const Layout = ({ children }) => {
   }, []);
 
   return (
-    <div className="relative min-h-screen w-full bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center">
+    <div className="relative min-h-screen w-full bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center transition-colors duration-300">
       <motion.div
-        className="mx-auto w-full max-w-[430px] min-h-screen bg-white relative overflow-hidden border border-gray-200 shadow-lg"
+        className="mx-auto w-full max-w-[430px] min-h-screen bg-white dark:bg-gray-900 relative overflow-hidden border border-gray-200 dark:border-gray-700 shadow-lg transition-colors duration-300"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
       >
+        {/* Theme Toggle Button */}
+        <ThemeToggle className="fixed top-4 left-4 z-50" />
+
         {/* Music Control Button with Status Indicator */}
         <motion.button
           initial={{ scale: 0 }}
@@ -163,7 +169,7 @@ const Layout = ({ children }) => {
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={toggleMusic}
-          className="fixed top-4 right-4 z-50 bg-white/80 backdrop-blur-sm p-3 rounded-full shadow-lg border border-rose-100/50"
+          className="fixed top-4 right-4 z-50 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-3 rounded-full shadow-lg border border-rose-100/50 dark:border-gray-700/50 transition-colors duration-200"
         >
           {isPlaying ? (
             <div className="relative">
@@ -201,6 +207,10 @@ const Layout = ({ children }) => {
       </motion.div>
     </div>
   );
+};
+
+Layout.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export default Layout;
