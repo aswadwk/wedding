@@ -11,9 +11,15 @@ const LandingPage = ({ onOpenInvitation }) => (
     animate={{ opacity: 1 }}
     exit={{ opacity: 0 }}
     className="relative min-h-screen overflow-hidden transition-colors duration-300 dark:bg-gray-900"
+    style={{
+      backgroundImage: `url('/images/image-bg-up.png'), url('/images/image-bg-down.png'), linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(255,241,242,0.05), rgba(255,255,255,0.1))`,
+      backgroundSize: 'contain, contain, cover',
+      backgroundRepeat: 'no-repeat, no-repeat, no-repeat',
+      backgroundPosition: 'top right, bottom right, center',
+    }}
   >
     {/* Decorative Background */}
-    <div className="absolute inset-0 bg-gradient-to-b from-white via-rose-50/30 to-white dark:from-gray-900 dark:via-gray-800/30 dark:to-gray-900" />
+    <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-rose-50/5 to-white/10 dark:from-gray-900/20 dark:via-gray-800/10 dark:to-gray-900/20" />
     <div className="absolute top-0 right-0 w-64 h-64 translate-x-1/2 -translate-y-1/2 rounded-full md:w-96 md:h-96 bg-rose-100/20 dark:bg-rose-900/20 blur-3xl" />
     <div className="absolute bottom-0 left-0 w-64 h-64 -translate-x-1/2 translate-y-1/2 rounded-full md:w-96 md:h-96 bg-pink-100/20 dark:bg-pink-900/20 blur-3xl" />
 

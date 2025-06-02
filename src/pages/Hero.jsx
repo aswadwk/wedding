@@ -107,7 +107,18 @@ export default function Hero() {
 
     return (
         <>
-            <section id="home" className="relative flex flex-col items-center justify-center min-h-screen px-4 py-16 overflow-hidden text-center transition-colors duration-300 sm:py-20 bg-gradient-to-br from-rose-50/50 to-pink-50/50 dark:from-gray-900/50 dark:to-gray-800/50">
+            <section
+                id="home"
+                className="relative flex flex-col items-center justify-center min-h-screen px-4 py-16 overflow-hidden text-center transition-colors duration-300 sm:py-20"
+                style={{
+                    backgroundImage: `url('/images/image-bg-up.png'), url('/images/image-bg-down.png'), linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(255,241,242,0.05), rgba(255,255,255,0.1))`,
+                    backgroundSize: 'contain, contain, cover',
+                    backgroundRepeat: 'no-repeat, no-repeat, no-repeat',
+                    backgroundPosition: 'top right, bottom right, center',
+                }}
+            >
+                {/* Decorative Background */}
+                <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-rose-50/5 to-white/10 dark:from-gray-900/20 dark:via-gray-800/10 dark:to-gray-900/20" />
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}

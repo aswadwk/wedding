@@ -25,20 +25,31 @@ export default function Gifts() {
     };
 
     return (<>
-        <section id="gifts" className="min-h-screen relative overflow-hidden bg-gradient-to-br from-orange-50/50 to-yellow-50/50 dark:from-gray-800/50 dark:to-gray-900/50 transition-colors duration-300">
-            <div className="container mx-auto px-4 py-20 relative z-10">
+        <section
+            id="gifts"
+            className="relative min-h-screen overflow-hidden transition-colors duration-300"
+            style={{
+                backgroundImage: `url('/images/image-bg-up.png'), url('/images/image-bg-down.png'), linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(255,241,242,0.05), rgba(255,255,255,0.1))`,
+                backgroundSize: 'contain, contain, cover',
+                backgroundRepeat: 'no-repeat, no-repeat, no-repeat',
+                backgroundPosition: 'top right, bottom right, center',
+            }}
+        >
+            {/* Decorative Background */}
+            <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-rose-50/5 to-white/10 dark:from-gray-900/20 dark:via-gray-800/10 dark:to-gray-900/20" />
+            <div className="container relative z-10 px-4 py-20 mx-auto">
                 {/* Section Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={hasAnimated ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.8 }}
-                    className="text-center space-y-4 mb-16"
+                    className="mb-16 space-y-4 text-center"
                 >
                     <motion.span
                         initial={{ opacity: 0, y: 10 }}
                         animate={hasAnimated ? { opacity: 1, y: 0 } : {}}
                         transition={{ delay: 0.2 }}
-                        className="inline-block text-rose-500 dark:text-rose-400 font-medium transition-colors duration-300"
+                        className="inline-block font-medium transition-colors duration-300 text-rose-500 dark:text-rose-400"
                     >
                         Hadiah Pernikahan
                     </motion.span>
@@ -47,7 +58,7 @@ export default function Gifts() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={hasAnimated ? { opacity: 1, y: 0 } : {}}
                         transition={{ delay: 0.3 }}
-                        className="text-4xl md:text-5xl font-serif text-gray-800 dark:text-gray-100 transition-colors duration-300"
+                        className="font-serif text-4xl text-gray-800 transition-colors duration-300 md:text-5xl dark:text-gray-100"
                     >
                         Berikan Hadiah
                     </motion.h2>
@@ -69,24 +80,24 @@ export default function Gifts() {
                         initial={{ opacity: 0 }}
                         animate={hasAnimated ? { opacity: 1 } : {}}
                         transition={{ delay: 0.5 }}
-                        className="space-y-4 max-w-md mx-auto"
+                        className="max-w-md mx-auto space-y-4"
                     >
                         {/* Arabic InsyaAllah */}
-                        <p className="font-arabic text-xl text-gray-800 dark:text-gray-100 transition-colors duration-300">
+                        <p className="text-xl text-gray-800 transition-colors duration-300 font-arabic dark:text-gray-100">
                             إن شاء الله
                         </p>
 
                         {/* Main Message */}
-                        <p className="text-gray-600 dark:text-gray-300 leading-relaxed transition-colors duration-300">
+                        <p className="leading-relaxed text-gray-600 transition-colors duration-300 dark:text-gray-300">
                             Insya Allah, Kami Akan Menyalurkan Semua Hadiah yang Diberikan ke Beberapa Masjid dan Lembaga yang Membutuhkan
                         </p>
 
                         {/* Arabic Dua */}
                         <div className="space-y-2">
-                            <p className="font-arabic text-lg text-gray-800 dark:text-gray-100 transition-colors duration-300">
+                            <p className="text-lg text-gray-800 transition-colors duration-300 font-arabic dark:text-gray-100">
                                 جزاكم الله خيرا وبارك الله فيكم
                             </p>
-                            <p className="text-gray-600 dark:text-gray-300 italic text-sm transition-colors duration-300">
+                            <p className="text-sm italic text-gray-600 transition-colors duration-300 dark:text-gray-300">
                                 Jazakumullahu khairan, Barakallah fiikum
                             </p>
                         </div>
@@ -99,14 +110,14 @@ export default function Gifts() {
                         transition={{ delay: 0.6 }}
                         className="flex items-center justify-center gap-3 pt-4"
                     >
-                        <div className="h-px w-8 bg-rose-200/50" />
+                        <div className="w-8 h-px bg-rose-200/50" />
                         <div className="w-1.5 h-1.5 rounded-full bg-rose-300" />
-                        <div className="h-px w-8 bg-rose-200/50" />
+                        <div className="w-8 h-px bg-rose-200/50" />
                     </motion.div>
                 </motion.div>
 
                 {/* Bank Accounts Grid */}
-                <div className="max-w-2xl mx-auto grid gap-6">
+                <div className="grid max-w-2xl gap-6 mx-auto">
                     {config.data.banks.map((account, index) => (
                         <motion.div
                             key={account.accountNumber}
@@ -115,29 +126,29 @@ export default function Gifts() {
                             transition={{ delay: 0.2 * index + 0.7 }}
                             className="relative group"
                         >
-                            <div className="absolute inset-0 bg-gradient-to-r from-rose-100/50 dark:from-rose-900/20 to-pink-100/50 dark:to-pink-900/20 rounded-2xl transform transition-transform group-hover:scale-105 duration-300" />
-                            <div className="relative backdrop-blur-sm bg-white/80 dark:bg-gray-800/80 p-6 rounded-2xl border border-rose-100/50 dark:border-gray-700/50 shadow-lg transition-colors duration-300">
+                            <div className="absolute inset-0 transition-transform duration-300 transform bg-gradient-to-r from-rose-100/50 dark:from-rose-900/20 to-pink-100/50 dark:to-pink-900/20 rounded-2xl group-hover:scale-105" />
+                            <div className="relative p-6 transition-colors duration-300 border shadow-lg backdrop-blur-sm bg-white/80 dark:bg-gray-800/80 rounded-2xl border-rose-100/50 dark:border-gray-700/50">
                                 <div className="flex items-center justify-between">
                                     <div className="flex items-center space-x-4">
-                                        <div className="w-12 h-12 rounded-lg bg-white dark:bg-gray-700 p-2 shadow-sm transition-colors duration-300">
+                                        <div className="w-12 h-12 p-2 transition-colors duration-300 bg-white rounded-lg shadow-sm dark:bg-gray-700">
                                             <Building2 className="w-full h-full text-rose-500 dark:text-rose-400" />
                                         </div>
                                         <div>
-                                            <h3 className="font-medium text-gray-800 dark:text-gray-100 transition-colors duration-300">{account.bank}</h3>
-                                            <p className="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-300">{account.accountName}</p>
+                                            <h3 className="font-medium text-gray-800 transition-colors duration-300 dark:text-gray-100">{account.bank}</h3>
+                                            <p className="text-sm text-gray-500 transition-colors duration-300 dark:text-gray-400">{account.accountName}</p>
                                         </div>
                                     </div>
                                     <Wallet className="w-5 h-5 text-rose-400" />
                                 </div>
 
                                 <div className="mt-4">
-                                    <div className="flex items-center justify-between bg-gray-50/80 dark:bg-gray-700/80 px-4 py-3 rounded-lg transition-colors duration-300">
-                                        <p className="font-mono text-gray-700 dark:text-gray-200 transition-colors duration-300">{account.accountNumber}</p>
+                                    <div className="flex items-center justify-between px-4 py-3 transition-colors duration-300 rounded-lg bg-gray-50/80 dark:bg-gray-700/80">
+                                        <p className="font-mono text-gray-700 transition-colors duration-300 dark:text-gray-200">{account.accountNumber}</p>
                                         <motion.button
                                             whileHover={{ scale: 1.05 }}
                                             whileTap={{ scale: 0.95 }}
                                             onClick={() => copyToClipboard(account.accountNumber, account.bank)}
-                                            className="flex items-center space-x-1 text-rose-500 dark:text-rose-400 hover:text-rose-600 dark:hover:text-rose-300 transition-colors duration-300"
+                                            className="flex items-center space-x-1 transition-colors duration-300 text-rose-500 dark:text-rose-400 hover:text-rose-600 dark:hover:text-rose-300"
                                         >
                                             {copiedAccount === account.bank ? (
                                                 <CheckCircle className="w-4 h-4" />

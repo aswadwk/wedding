@@ -7,13 +7,24 @@ export default function Events() {
     return (
         <>
             {/* Event Section */}
-            <section id="event" className="min-h-screen relative overflow-hidden bg-gradient-to-br from-pink-50/50 to-rose-50/50 dark:from-gray-800/50 dark:to-gray-900/50 transition-colors duration-300">
+            <section
+                id="event"
+                className="relative min-h-screen overflow-hidden transition-colors duration-300"
+                style={{
+                    backgroundImage: `url('/images/image-bg-up.png'), url('/images/image-bg-down.png'), linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(255,241,242,0.05), rgba(255,255,255,0.1))`,
+                    backgroundSize: 'contain, contain, cover',
+                    backgroundRepeat: 'no-repeat, no-repeat, no-repeat',
+                    backgroundPosition: 'top right, bottom right, center',
+                }}
+            >
+                {/* Decorative Background */}
+                <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-rose-50/5 to-white/10 dark:from-gray-900/20 dark:via-gray-800/10 dark:to-gray-900/20" />
                 <motion.div
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8 }}
-                    className="relative z-10 container mx-auto px-4 py-20"
+                    className="container relative z-10 px-4 py-20 mx-auto"
                 >
                     {/* Section Header */}
                     <motion.div
@@ -21,14 +32,14 @@ export default function Events() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
-                        className="text-center space-y-4 mb-16"
+                        className="mb-16 space-y-4 text-center"
                     >
                         <motion.span
                             initial={{ opacity: 0, y: 10 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.2 }}
-                            className="inline-block text-rose-500 dark:text-rose-400 font-medium mb-2 transition-colors duration-300"
+                            className="inline-block mb-2 font-medium transition-colors duration-300 text-rose-500 dark:text-rose-400"
                         >
                             Catat Tanggal Penting Ini
                         </motion.span>
@@ -38,7 +49,7 @@ export default function Events() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.3 }}
-                            className="text-4xl md:text-5xl font-serif text-gray-800 dark:text-gray-100 leading-tight transition-colors duration-300"
+                            className="font-serif text-4xl leading-tight text-gray-800 transition-colors duration-300 md:text-5xl dark:text-gray-100"
                         >
                             Rangkaian Acara Pernikahan
                         </motion.h2>
@@ -48,7 +59,7 @@ export default function Events() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.4 }}
-                            className="text-gray-500 dark:text-gray-400 max-w-md mx-auto transition-colors duration-300"
+                            className="max-w-md mx-auto text-gray-500 transition-colors duration-300 dark:text-gray-400"
                         >
                             Kami Mengundang Anda untuk Merayakan Hari Istimewa Sebagai Awal Perjalanan Cinta Kami
                         </motion.p>

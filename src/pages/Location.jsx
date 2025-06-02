@@ -6,7 +6,18 @@ import { formatEventDate } from "@/lib/formatEventDate";
 export default function Location() {
     return (<>
         {/* Location section */}
-        <section id="location" className="relative min-h-screen overflow-hidden transition-colors duration-300 bg-gradient-to-br from-rose-50/50 to-orange-50/50 dark:from-gray-900/50 dark:to-gray-800/50">
+        <section
+            id="location"
+            className="relative min-h-screen overflow-hidden transition-colors duration-300"
+            style={{
+                backgroundImage: `url('/images/image-bg-up.png'), url('/images/image-bg-down.png'), linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(255,241,242,0.05), rgba(255,255,255,0.1))`,
+                backgroundSize: 'contain, contain, cover',
+                backgroundRepeat: 'no-repeat, no-repeat, no-repeat',
+                backgroundPosition: 'top right, bottom right, center',
+            }}
+        >
+            {/* Decorative Background */}
+            <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-rose-50/5 to-white/10 dark:from-gray-900/20 dark:via-gray-800/10 dark:to-gray-900/20" />
             <div className="container relative z-10 px-4 py-20 mx-auto">
                 {/* Section Header */}
                 <motion.div
