@@ -101,7 +101,7 @@ export default function Couple() {
                 </motion.div>
 
                 {/* Main Content Grid */}
-                <div className="grid items-center grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-12">
+                <div className="grid items-center grid-cols-1 gap-8 lg:gap-12">
                     {/* Content Section */}
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
