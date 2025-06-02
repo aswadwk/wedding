@@ -154,7 +154,7 @@ const Layout = ({ children }) => {
   return (
     <div className="relative flex items-center justify-center w-full min-h-screen transition-colors duration-300 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
       <motion.div
-        className="mx-auto w-full max-w-[430px] min-h-screen bg-white dark:bg-gray-900 relative overflow-hidden border border-gray-200 dark:border-gray-700 shadow-lg transition-colors duration-300"
+        className="mx-auto w-full max-w-[430px] min-h-screen relative overflow-hidden border border-gray-200 dark:border-gray-700 shadow-lg transition-colors duration-300 bg-white dark:bg-gray-900"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
@@ -181,7 +181,7 @@ const Layout = ({ children }) => {
           )}
         </motion.button>
 
-        <main className="relative h-full w-full pb-[100px]">
+        <main className="relative w-full h-full mt-[-51px]">
           {children}
         </main>
         <BottomBar />

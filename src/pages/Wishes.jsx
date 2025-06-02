@@ -236,7 +236,7 @@ export default function Wishes() {
                     className="max-w-2xl mx-auto mt-12"
                 >
                     <form onSubmit={handleSubmitWish} className="relative">
-                        <div className="p-6 transition-colors duration-300 border shadow-lg backdrop-blur-sm bg-white/80 dark:bg-gray-800/80 rounded-2xl border-rose-100/50 dark:border-gray-700/50">
+                        <div className="p-6 transition-colors duration-300 border shadow-lg backdrop-blur-sm bg-white/80 dark:bg-gray-800/80 rounded-2xl border-rose-100/50 dark:border-gray-700/50 mb-[100px]">
                             <div className='space-y-2'>
                                 {/* Name Input */}
                                 <div className="space-y-2">
