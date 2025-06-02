@@ -1,19 +1,10 @@
-
 import { motion } from 'framer-motion'
-import Confetti from 'react-confetti';
 import {
     MessageCircle,
 } from 'lucide-react'
-import { useEffect, useState } from 'react';
 
 export default function Wish() {
-    const [showConfetti, setShowConfetti] = useState(false);
 
-    // Show confetti animation on component mount
-    useEffect(() => {
-        setShowConfetti(true);
-        setTimeout(() => setShowConfetti(false), 3000);
-    }, []);
     return (
         <section id="wishes" className="relative min-h-screen overflow-hidden transition-colors duration-300 dark:bg-gray-900"
             style={{
@@ -27,9 +18,7 @@ export default function Wish() {
             <div className="absolute top-0 right-0 w-64 h-64 translate-x-1/2 -translate-y-1/2 rounded-full md:w-96 md:h-96 bg-rose-100/10 dark:bg-rose-900/10 blur-3xl" />
             <div className="absolute bottom-0 left-0 w-64 h-64 -translate-x-1/2 translate-y-1/2 rounded-full md:w-96 md:h-96 bg-pink-100/10 dark:bg-pink-900/10 blur-3xl" />
 
-            {showConfetti && <Confetti recycle={false} numberOfPieces={200} />}
             <div className="container relative z-10 px-4 py-20 mx-auto">
-                {/* Section Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -51,7 +40,7 @@ export default function Wish() {
                         transition={{ delay: 0.3 }}
                         className="font-serif text-4xl text-gray-800 transition-colors duration-300 dark:text-gray-100 md:text-5xl"
                     >
-                        Ucapan Terima Kasih
+                        Terima Kasih
                     </motion.h2>
 
                     {/* Decorative Divider */}
