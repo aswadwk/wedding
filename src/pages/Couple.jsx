@@ -1,24 +1,8 @@
 import { Heart } from 'lucide-react'
 import { motion } from 'framer-motion'
-import { useEffect, useState } from 'react';
 import config from '@/config/config';
 
 export default function Couple() {
-    const [currentImage, setCurrentImage] = useState(0);
-
-    const images = [
-        { src: '/images/man.jpg', title: config.data.groomName, subtitle: 'Calon Mempelai Pria' },
-        { src: '/images/women.jpg', title: config.data.brideName, subtitle: 'Calon Mempelai Wanita' },
-        { src: '/images/couple.jpg', title: 'Calon Pengantin', subtitle: 'Kami Berdua' }
-    ];
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentImage((prev) => (prev + 1) % images.length);
-        }, 4000); // Change image every 4 seconds
-
-        return () => clearInterval(interval);
-    }, [images.length]);
 
     const FloatingHearts = () => {
         return (
@@ -118,106 +102,28 @@ export default function Couple() {
 
                 {/* Main Content Grid */}
                 <div className="grid items-center grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-12">
-                    {/* Image Section with Animation */}
-                    <motion.div
-                        initial={{ opacity: 0, x: -50 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.8, delay: 0.8 }}
-                        className="relative order-2 lg:order-1"
-                    >
-                        <div className="relative w-full max-w-md mx-auto">
-                            {/* Main Image Container */}
-                            <div className="relative aspect-[3/4] rounded-3xl overflow-hidden shadow-2xl">
-                                {/* Background decorative elements */}
-                                <div className="absolute -inset-4 bg-gradient-to-r from-rose-200/20 to-pink-200/20 dark:from-rose-800/20 dark:to-pink-800/20 rounded-3xl blur-xl" />
-
-                                {/* Animated Images */}
-                                {images.map((image, index) => (
-                                    <motion.div
-                                        key={index}
-                                        initial={{ opacity: 0, scale: 1.1 }}
-                                        animate={{
-                                            opacity: currentImage === index ? 1 : 0,
-                                            scale: currentImage === index ? 1 : 1.1,
-                                        }}
-                                        transition={{
-                                            duration: 1,
-                                            ease: "easeInOut"
-                                        }}
-                                        className="absolute inset-0"
-                                    >
-                                        <img
-                                            src={image.src}
-                                            alt={image.title}
-                                            className="object-cover object-center w-full h-full"
-                                            loading="lazy"
-                                        />
-                                        {/* Overlay gradient */}
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
-                                    </motion.div>
-                                ))}
-
-                                {/* Image Title Overlay */}
-                                <motion.div
-                                    key={currentImage}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ duration: 0.6, delay: 0.3 }}
-                                    className="absolute bottom-0 left-0 right-0 p-6 text-center text-white"
-                                >
-                                    <div className="p-4 bg-black/30 backdrop-blur-sm rounded-xl">
-                                        <h3 className="mb-1 font-serif text-xl font-bold sm:text-2xl">
-                                            {images[currentImage].title}
-                                        </h3>
-                                        <p className="text-sm opacity-90">
-                                            {images[currentImage].subtitle}
-                                        </p>
-                                    </div>
-                                </motion.div>
-                            </div>
-
-                            {/* Image Navigation Dots */}
-                            <div className="flex justify-center mt-6 space-x-2">
-                                {images.map((_, index) => (
-                                    <button
-                                        key={index}
-                                        onClick={() => setCurrentImage(index)}
-                                        className={`w-3 h-3 rounded-full transition-all duration-300 ${currentImage === index
-                                            ? 'bg-rose-500 scale-125'
-                                            : 'bg-gray-300 dark:bg-gray-600 hover:bg-rose-300'
-                                            }`}
-                                    />
-                                ))}
-                            </div>
-
-                            {/* Decorative elements */}
-                            <div className="absolute w-20 h-20 rounded-full -top-4 -right-4 bg-rose-100/50 dark:bg-rose-800/30 blur-2xl" />
-                            <div className="absolute w-16 h-16 rounded-full -bottom-4 -left-4 bg-pink-100/50 dark:bg-pink-800/30 blur-2xl" />
-                        </div>
-                    </motion.div>
-
                     {/* Content Section */}
                     <motion.div
-                        initial={{ opacity: 0, x: 50 }}
-                        animate={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 1 }}
-                        className="order-1 space-y-6 text-center lg:order-2"
+                        className="order-1 space-y-8 text-center lg:order-2"
                     >
                         {/* Groom Info */}
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 1.2 }}
-                            className="space-y-2"
+                            className="space-y-3"
                         >
-                            <h3 className="font-serif text-3xl font-bold text-gray-800 sm:text-4xl dark:text-gray-100">
+                            <h3 className="font-serif text-4xl font-bold text-gray-800 sm:text-5xl dark:text-gray-100">
                                 {config.data.groomName}
                             </h3>
-                            <p className="text-lg font-medium text-gray-600 dark:text-gray-400">
+                            <p className="text-lg font-light text-gray-600 dark:text-gray-400">
                                 Calon Mempelai Pria
                             </p>
-                            <p className="text-base italic text-gray-500 dark:text-gray-500">
-                                {config.data.parentGroom}
+                            <p className="text-sm italic text-gray-500 dark:text-gray-500">
+                                Putra dari {config.data.parentGroom}
                             </p>
                         </motion.div>
 
@@ -226,24 +132,24 @@ export default function Couple() {
                             initial={{ scale: 0 }}
                             animate={{ scale: 1 }}
                             transition={{ delay: 1.4 }}
-                            className="flex items-center justify-center py-4"
+                            className="flex items-center justify-center py-6"
                         >
                             <div className="flex items-center space-x-6">
-                                <div className="w-20 h-px bg-gradient-to-r from-transparent to-rose-300 dark:to-rose-600" />
+                                <div className="w-16 h-px bg-gradient-to-r from-transparent to-rose-300 dark:to-rose-600" />
                                 <motion.div
                                     animate={{
-                                        scale: [1, 1.2, 1],
-                                        rotate: [0, 10, -10, 0]
+                                        scale: [1, 1.1, 1],
+                                        rotate: [0, 5, -5, 0]
                                     }}
                                     transition={{
-                                        duration: 2,
+                                        duration: 3,
                                         repeat: Infinity,
                                         ease: "easeInOut"
                                     }}
                                 >
-                                    <Heart className="w-10 h-10 text-rose-500" fill="currentColor" />
+                                    <Heart className="w-8 h-8 text-rose-500" fill="currentColor" />
                                 </motion.div>
-                                <div className="w-20 h-px bg-gradient-to-l from-transparent to-rose-300 dark:to-rose-600" />
+                                <div className="w-16 h-px bg-gradient-to-l from-transparent to-rose-300 dark:to-rose-600" />
                             </div>
                         </motion.div>
 
@@ -252,16 +158,16 @@ export default function Couple() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 1.6 }}
-                            className="space-y-2"
+                            className="space-y-3"
                         >
-                            <h3 className="font-serif text-3xl font-bold text-gray-800 sm:text-4xl dark:text-gray-100">
+                            <h3 className="font-serif text-4xl font-bold text-gray-800 sm:text-5xl dark:text-gray-100">
                                 {config.data.brideName}
                             </h3>
-                            <p className="text-lg font-medium text-gray-600 dark:text-gray-400">
+                            <p className="text-lg font-light text-gray-600 dark:text-gray-400">
                                 Calon Mempelai Wanita
                             </p>
-                            <p className="text-base italic text-gray-500 dark:text-gray-500">
-                                {config.data.parentBride}
+                            <p className="text-sm italic text-gray-500 dark:text-gray-500">
+                                Putri dari {config.data.parentBride}
                             </p>
                         </motion.div>
                     </motion.div>

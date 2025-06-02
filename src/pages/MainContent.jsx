@@ -1,4 +1,3 @@
-import Hero from '@/pages/Hero'
 import Events from '@/pages/Events'
 import Location from '@/pages/Location';
 import Wishes from '@/pages/Wishes';
@@ -10,7 +9,7 @@ export default function MainContent() {
     return (
         <>
             <Couple />
-            <Hero />
+            {/* <Hero /> */}
             <Events />
             <Location />
             <Gifts />

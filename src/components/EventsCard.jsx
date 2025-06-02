@@ -32,7 +32,7 @@ const Modal = ({ isOpen, onClose, children }) => {
             exit={{ opacity: 0, y: 20 }}
             className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[70] w-[90%] max-w-sm"
           >
-            <div className="bg-white dark:bg-gray-800 transform -translate-x-1/2 -translate-y-1/2 rounded-2xl p-6 shadow-2xl border border-gray-100 dark:border-gray-700 transition-colors duration-300">
+            <div className="p-6 transition-colors duration-300 transform -translate-x-1/2 -translate-y-1/2 bg-white border border-gray-100 shadow-2xl dark:bg-gray-800 rounded-2xl dark:border-gray-700">
               {children}
             </div>
           </motion.div>
@@ -50,7 +50,7 @@ const CalendarButton = ({ icon: Icon, label, onClick, className = "" }) => (
     whileTap={{ scale: 0.98 }}
   >
     <Icon className="w-5 h-5" />
-    <span className="text-gray-700 dark:text-gray-200 font-medium">{label}</span>
+    <span className="font-medium text-gray-700 dark:text-gray-200">{label}</span>
   </motion.button>
 );
 
@@ -133,30 +133,30 @@ END:VCALENDAR`;
   return (
     <div className="relative">
       <motion.div
-        className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-700 space-y-4 transition-colors duration-300"
+        className="p-6 space-y-4 transition-colors duration-300 bg-white border border-gray-100 shadow-sm dark:bg-gray-800 rounded-2xl dark:border-gray-700"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <div className="flex justify-between items-center">
-          <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-100 transition-colors duration-300">{eventData.title.split(' - ')[0]}</h3>
+        <div className="flex items-center justify-between">
+          <h3 className="text-xl font-semibold text-gray-800 transition-colors duration-300 dark:text-gray-100">{eventData.title.split(' - ')[0]}</h3>
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="text-rose-500 hover:text-rose-600 dark:text-rose-400 dark:hover:text-rose-300 transition-colors"
+            className="transition-colors text-rose-500 hover:text-rose-600 dark:text-rose-400 dark:hover:text-rose-300"
             onClick={() => setShowCalendarModal(true)}
           >
             <CalendarPlus className="w-5 h-5" />
           </motion.button>
         </div>
-        <div className="space-y-3 text-gray-600 dark:text-gray-300 transition-colors duration-300">
+        <div className="space-y-3 text-gray-600 transition-colors duration-300 dark:text-gray-300">
           <div className="flex items-center space-x-3">
             <Calendar className="w-5 h-5 text-rose-500 dark:text-rose-400" />
             <span>{formatEventDate(eventData.date)}</span>
           </div>
           <div className="flex items-center space-x-3">
             <Clock className="w-5 h-5 text-rose-500 dark:text-rose-400" />
-            <span>{eventData.startTime} - {eventData.endTime} WIB</span>
+            <span>{eventData.startTime} - {eventData.endTime}</span>
           </div>
           <div className="flex items-center space-x-3">
             <MapPin className="w-5 h-5 text-rose-500 dark:text-rose-400" />
@@ -170,13 +170,13 @@ END:VCALENDAR`;
         onClose={() => setShowCalendarModal(false)}
       >
         <div className="space-y-6 ">
-          <div className="flex justify-between  items-center">
-            <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-100 transition-colors duration-300">Add to Calendar</h3>
+          <div className="flex items-center justify-between">
+            <h3 className="text-xl font-semibold text-gray-800 transition-colors duration-300 dark:text-gray-100">Add to Calendar</h3>
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               onClick={() => setShowCalendarModal(false)}
-              className="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors duration-300"
+              className="text-gray-500 transition-colors duration-300 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
             >
               <X className="w-5 h-5" />
             </motion.button>

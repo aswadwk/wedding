@@ -106,152 +106,138 @@ export default function Hero() {
     };
 
     return (
-        <>
-            <section
-                id="home"
-                className="relative flex flex-col items-center justify-center min-h-screen px-4 py-16 overflow-hidden text-center transition-colors duration-300 sm:py-20"
-                style={{
-                    backgroundImage: `url('/images/image-bg-up.png'), url('/images/image-bg-down.png'), linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(255,241,242,0.05), rgba(255,255,255,0.1))`,
-                    backgroundSize: 'contain, contain, cover',
-                    backgroundRepeat: 'no-repeat, no-repeat, no-repeat',
-                    backgroundPosition: 'top right, bottom right, center',
-                }}
+        <section
+            id="home"
+            className="relative flex flex-col items-center justify-center min-h-screen px-4 py-16 overflow-hidden text-center transition-colors duration-300 sm:py-20"
+            style={{
+                backgroundImage: `url('/images/image-bg-up.png'), url('/images/image-bg-down.png'), linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(255,241,242,0.05), rgba(255,255,255,0.1))`,
+                backgroundSize: 'contain, contain, cover',
+                backgroundRepeat: 'no-repeat, no-repeat, no-repeat',
+                backgroundPosition: 'top right, bottom right, center',
+            }}
+        >
+            {/* Decorative Background */}
+            <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-rose-50/5 to-white/10 dark:from-gray-900/20 dark:via-gray-800/10 dark:to-gray-900/20" />
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="relative z-10 space-y-6"
             >
-                {/* Decorative Background */}
-                <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-rose-50/5 to-white/10 dark:from-gray-900/20 dark:via-gray-800/10 dark:to-gray-900/20" />
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                    className="relative z-10 space-y-6"
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ delay: 0.2 }}
+                    className="inline-block mx-auto"
                 >
-                    <motion.div
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        transition={{ delay: 0.2 }}
-                        className="inline-block mx-auto"
+                    <span className="px-4 py-1 text-sm transition-colors duration-300 border rounded-full bg-rose-50 dark:bg-rose-900/30 text-rose-600 dark:text-rose-400 border-rose-200 dark:border-rose-800">
+                        Catat Tanggal Penting Ini
+                    </span>
+                </motion.div>
+
+                <div className="space-y-4">
+                    <motion.p
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.4 }}
+                        className="text-base italic font-light text-gray-500 transition-colors duration-300 dark:text-gray-400 sm:text-lg"
                     >
-                        <span className="px-4 py-1 text-sm transition-colors duration-300 border rounded-full bg-rose-50 dark:bg-rose-900/30 text-rose-600 dark:text-rose-400 border-rose-200 dark:border-rose-800">
-                            Catat Tanggal Penting Ini
-                        </span>
-                    </motion.div>
+                        InsyaAllah Kami Akan Menikah
+                    </motion.p>
+                </div>
 
-                    <div className="space-y-4">
-                        <motion.p
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 0.4 }}
-                            className="text-base italic font-light text-gray-500 transition-colors duration-300 dark:text-gray-400 sm:text-lg"
-                        >
-                            InsyaAllah Kami Akan Menikah
-                        </motion.p>
-                        <motion.h2
-                            initial={{ scale: 0.8, opacity: 0 }}
-                            animate={{ scale: 1, opacity: 1 }}
-                            transition={{ delay: 0.6 }}
-                            className="font-serif text-2xl text-transparent sm:text-5xl bg-clip-text bg-gradient-to-r from-rose-600 to-pink-600"
-                        >
-                            {config.data.groomName}
-                            <br />
-                            &
-                            <br />
-                            {config.data.brideName}
-                        </motion.h2>
-                    </div>
+                {/* <motion.div
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.8 }}
+                    className="relative max-w-2xl mx-auto"
+                >
+                    <div className="absolute inset-0 transition-colors duration-300 bg-gradient-to-b from-rose-50/50 dark:from-gray-800/50 to-white/50 dark:to-gray-900/50 backdrop-blur-md rounded-3xl" />
 
-                    <motion.div
-                        initial={{ y: 20, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ delay: 0.8 }}
-                        className="relative max-w-md mx-auto"
-                    >
-                        <div className="absolute inset-0 transition-colors duration-300 bg-gradient-to-b from-rose-50/50 dark:from-gray-800/50 to-white/50 dark:to-gray-900/50 backdrop-blur-md rounded-2xl" />
+                    <div className="relative px-6 py-10 transition-colors duration-300 border sm:px-12 sm:py-14 rounded-3xl border-rose-100/50 dark:border-gray-700/50">
+                        <div className="absolute top-0 -translate-x-1/2 -translate-y-px left-1/2">
+                            <div className="w-24 sm:w-40 h-[3px] bg-gradient-to-r from-transparent via-rose-300 dark:via-gray-600 to-transparent transition-colors duration-300" />
+                        </div>
 
-                        <div className="relative px-4 py-8 transition-colors duration-300 border sm:px-8 sm:py-10 rounded-2xl border-rose-100/50 dark:border-gray-700/50">
-                            <div className="absolute top-0 -translate-x-1/2 -translate-y-px left-1/2">
-                                <div className="w-20 sm:w-32 h-[2px] bg-gradient-to-r from-transparent via-rose-200 dark:via-gray-600 to-transparent transition-colors duration-300" />
-                            </div>
-
-                            <div className="space-y-6 text-center">
-                                <div className="space-y-3">
-                                    <motion.div
-                                        initial={{ opacity: 0 }}
-                                        animate={{ opacity: 1 }}
-                                        transition={{ delay: 0.9 }}
-                                        className="flex items-center justify-center space-x-2"
-                                    >
-                                        <Calendar className="w-4 h-4 text-rose-400" />
-                                        <span className="text-sm font-medium text-gray-700 transition-colors duration-300 dark:text-gray-200 sm:text-base">
-                                            {formatEventDate(config.data.date, "full")}
-                                        </span>
-                                    </motion.div>
-
-                                    <motion.div
-                                        initial={{ opacity: 0 }}
-                                        animate={{ opacity: 1 }}
-                                        transition={{ delay: 1 }}
-                                        className="flex items-center justify-center space-x-2"
-                                    >
-                                        <Clock className="w-4 h-4 text-rose-400" />
-                                        <span className="text-sm font-medium text-gray-700 transition-colors duration-300 dark:text-gray-200 sm:text-base">
-                                            {config.data.time}
-                                        </span>
-                                    </motion.div>
-                                </div>
-
-                                <div className="flex items-center justify-center gap-3">
-                                    <div className="w-8 h-px transition-colors duration-300 sm:w-12 bg-rose-200/50 dark:bg-gray-600/50" />
-                                    <div className="w-2 h-2 transition-colors duration-300 rounded-full bg-rose-200 dark:bg-gray-600" />
-                                    <div className="w-8 h-px transition-colors duration-300 sm:w-12 bg-rose-200/50 dark:bg-gray-600/50" />
-                                </div>
+                        <div className="space-y-8 text-center">
+                            <div className="space-y-4">
+                                <motion.div
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ delay: 0.9 }}
+                                    className="flex items-center justify-center space-x-3"
+                                >
+                                    <Calendar className="w-5 h-5 text-rose-400" />
+                                    <span className="text-base font-medium text-gray-700 transition-colors duration-300 dark:text-gray-200 sm:text-lg">
+                                        {formatEventDate(config.data.date, "full")}
+                                    </span>
+                                </motion.div>
 
                                 <motion.div
                                     initial={{ opacity: 0 }}
                                     animate={{ opacity: 1 }}
-                                    transition={{ delay: 1.1 }}
-                                    className="space-y-2"
+                                    transition={{ delay: 1 }}
+                                    className="flex items-center justify-center space-x-3"
                                 >
-                                    <p className="font-serif text-sm italic text-gray-500 transition-colors duration-300 dark:text-gray-400">
-                                        Kepada Yth.
-                                    </p>
-                                    <p className="text-sm font-medium text-gray-600 transition-colors duration-300 dark:text-gray-300">
-                                        Bapak/Ibu/Saudara/i
-                                    </p>
-                                    <p className="text-lg font-semibold transition-colors duration-300 text-rose-500 dark:text-rose-400">
-                                        {guestName || "Tamu"}
-                                    </p>
+                                    <Clock className="w-5 h-5 text-rose-400" />
+                                    <span className="text-base font-medium text-gray-700 transition-colors duration-300 dark:text-gray-200 sm:text-lg">
+                                        {config.data.time}
+                                    </span>
                                 </motion.div>
                             </div>
 
-                            <div className="absolute bottom-0 -translate-x-1/2 translate-y-px left-1/2">
-                                <div className="w-20 sm:w-32 h-[2px] bg-gradient-to-r from-transparent via-rose-200 dark:via-gray-600 to-transparent transition-colors duration-300" />
+                            <div className="flex items-center justify-center gap-4">
+                                <div className="w-12 h-px transition-colors duration-300 sm:w-16 bg-rose-300/60 dark:bg-gray-600/60" />
+                                <div className="w-3 h-3 transition-colors duration-300 rounded-full bg-rose-300 dark:bg-gray-600" />
+                                <div className="w-12 h-px transition-colors duration-300 sm:w-16 bg-rose-300/60 dark:bg-gray-600/60" />
                             </div>
+
+                            <motion.div
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ delay: 1.1 }}
+                                className="space-y-3"
+                            >
+                                <p className="font-serif text-base italic text-gray-500 transition-colors duration-300 dark:text-gray-400 sm:text-lg">
+                                    Kepada Yth.
+                                </p>
+                                <p className="text-base font-medium text-gray-600 transition-colors duration-300 dark:text-gray-300 sm:text-lg">
+                                    Bapak/Ibu/Saudara/i
+                                </p>
+                                <p className="text-xl font-semibold transition-colors duration-300 text-rose-500 dark:text-rose-400 sm:text-2xl">
+                                    {guestName || "Tamu"}
+                                </p>
+                            </motion.div>
                         </div>
 
-                        <div className="absolute w-16 h-16 rounded-full -top-2 -right-2 sm:w-24 sm:h-24 bg-rose-100/20 blur-xl" />
-                        <div className="absolute w-16 h-16 rounded-full -bottom-2 -left-2 sm:w-24 sm:h-24 bg-rose-100/20 blur-xl" />
-                    </motion.div>
-
-                    <CountdownTimer targetDate={config.data.date} />
-
-                    <div className="relative pt-6">
-                        <FloatingHearts />
-                        <motion.div
-                            animate={{
-                                scale: [1, 1.1, 1],
-                                rotate: [0, 5, -5, 0]
-                            }}
-                            transition={{
-                                duration: 2,
-                                repeat: Infinity,
-                                ease: "easeInOut"
-                            }}
-                        >
-                            <Heart className="w-10 h-10 mx-auto sm:w-12 sm:h-12 text-rose-500" fill="currentColor" />
-                        </motion.div>
+                        <div className="absolute bottom-0 -translate-x-1/2 translate-y-px left-1/2">
+                            <div className="w-24 sm:w-40 h-[3px] bg-gradient-to-r from-transparent via-rose-300 dark:via-gray-600 to-transparent transition-colors duration-300" />
+                        </div>
                     </div>
-                </motion.div>
-            </section>
-        </>
+
+                    <div className="absolute w-20 h-20 rounded-full -top-3 -right-3 sm:w-28 sm:h-28 bg-rose-100/30 blur-2xl" />
+                    <div className="absolute w-20 h-20 rounded-full -bottom-3 -left-3 sm:w-28 sm:h-28 bg-rose-100/30 blur-2xl" />
+                </motion.div> */}
+
+                <CountdownTimer targetDate={config.data.date} />
+
+                <div className="relative pt-6">
+                    <FloatingHearts />
+                    <motion.div
+                        animate={{
+                            scale: [1, 1.1, 1],
+                            rotate: [0, 5, -5, 0]
+                        }}
+                        transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            ease: "easeInOut"
+                        }}
+                    >
+                        <Heart className="w-10 h-10 mx-auto sm:w-12 sm:h-12 text-rose-500" fill="currentColor" />
+                    </motion.div>
+                </div>
+            </motion.div>
+        </section>
     )
 }

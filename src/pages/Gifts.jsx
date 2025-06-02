@@ -24,7 +24,7 @@ export default function Gifts() {
         setTimeout(() => setCopiedAccount(null), 2000);
     };
 
-    return (<>
+    return (
         <section
             id="gifts"
             className="relative min-h-screen overflow-hidden transition-colors duration-300"
@@ -43,7 +43,7 @@ export default function Gifts() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={hasAnimated ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.8 }}
-                    className="mb-16 space-y-4 text-center"
+                    className="mb-8 space-y-4 text-center"
                 >
                     <motion.span
                         initial={{ opacity: 0, y: 10 }}
@@ -53,15 +53,6 @@ export default function Gifts() {
                     >
                         Hadiah Pernikahan
                     </motion.span>
-
-                    <motion.h2
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={hasAnimated ? { opacity: 1, y: 0 } : {}}
-                        transition={{ delay: 0.3 }}
-                        className="font-serif text-4xl text-gray-800 transition-colors duration-300 md:text-5xl dark:text-gray-100"
-                    >
-                        Berikan Hadiah
-                    </motion.h2>
 
                     {/* Decorative Divider */}
                     <motion.div
@@ -73,46 +64,6 @@ export default function Gifts() {
                         <div className="h-[1px] w-12 bg-rose-200 dark:bg-gray-600 transition-colors duration-300" />
                         <Gift className="w-5 h-5 text-rose-400" />
                         <div className="h-[1px] w-12 bg-rose-200 dark:bg-gray-600 transition-colors duration-300" />
-                    </motion.div>
-
-                    {/* Message Container */}
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={hasAnimated ? { opacity: 1 } : {}}
-                        transition={{ delay: 0.5 }}
-                        className="max-w-md mx-auto space-y-4"
-                    >
-                        {/* Arabic InsyaAllah */}
-                        <p className="text-xl text-gray-800 transition-colors duration-300 font-arabic dark:text-gray-100">
-                            إن شاء الله
-                        </p>
-
-                        {/* Main Message */}
-                        <p className="leading-relaxed text-gray-600 transition-colors duration-300 dark:text-gray-300">
-                            Insya Allah, Kami Akan Menyalurkan Semua Hadiah yang Diberikan ke Beberapa Masjid dan Lembaga yang Membutuhkan
-                        </p>
-
-                        {/* Arabic Dua */}
-                        <div className="space-y-2">
-                            <p className="text-lg text-gray-800 transition-colors duration-300 font-arabic dark:text-gray-100">
-                                جزاكم الله خيرا وبارك الله فيكم
-                            </p>
-                            <p className="text-sm italic text-gray-600 transition-colors duration-300 dark:text-gray-300">
-                                Jazakumullahu khairan, Barakallah fiikum
-                            </p>
-                        </div>
-                    </motion.div>
-
-                    {/* Optional: Additional Decorative Element */}
-                    <motion.div
-                        initial={{ scale: 0 }}
-                        animate={hasAnimated ? { scale: 1 } : {}}
-                        transition={{ delay: 0.6 }}
-                        className="flex items-center justify-center gap-3 pt-4"
-                    >
-                        <div className="w-8 h-px bg-rose-200/50" />
-                        <div className="w-1.5 h-1.5 rounded-full bg-rose-300" />
-                        <div className="w-8 h-px bg-rose-200/50" />
                     </motion.div>
                 </motion.div>
 
@@ -167,5 +118,5 @@ export default function Gifts() {
                 </div>
             </div>
         </section>
-    </>)
+    );
 }
