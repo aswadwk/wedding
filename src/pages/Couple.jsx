@@ -123,7 +123,7 @@ export default function Couple() {
                                 Calon Mempelai Pria
                             </p>
                             <p className="text-sm italic text-gray-500 dark:text-gray-500">
-                                Putra dari {config.data.parentGroom}
+                                {config.data.parentGroom}
                             </p>
                         </motion.div>
 
@@ -167,7 +167,7 @@ export default function Couple() {
                                 Calon Mempelai Wanita
                             </p>
                             <p className="text-sm italic text-gray-500 dark:text-gray-500">
-                                Putri dari {config.data.parentBride}
+                                {config.data.parentBride}
                             </p>
                         </motion.div>
                     </motion.div>

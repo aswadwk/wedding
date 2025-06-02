@@ -22,12 +22,12 @@ export default function Wishes() {
     const [showConfetti, setShowConfetti] = useState(false);
     const [newWish, setNewWish] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const [attendance, setAttendance] = useState('');
+    const [attendance, setAttendance] = useState('attending');
     const [isOpen, setIsOpen] = useState(false);
     const [name, setName] = useState('Tamu');
 
     const options = [
-        { value: 'attending', label: 'Ya, saya akan hadir' },
+        { value: 'attending', label: 'Ya, saya akan hadir', isDefault: true },
         { value: 'not_attending', label: 'Tidak, saya tidak bisa hadir' },
         { value: 'maybe', label: 'Mungkin, saya akan konfirmasi nanti' }
     ];
