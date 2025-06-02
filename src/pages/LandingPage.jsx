@@ -168,24 +168,22 @@ const LandingPage = ({ onOpenInvitation }) => {
                 </motion.div>
 
                 {/* Guest Name */}
-                {guestName && (
-                  < motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 1.1 }}
-                    className="space-y-2"
-                  >
-                    <p className="font-serif text-sm italic text-gray-500 transition-colors duration-300 dark:text-gray-400">
-                      Kepada Yth.
-                    </p>
-                    <p className="text-sm font-medium text-gray-600 transition-colors duration-300 dark:text-gray-300">
-                      Bapak/Ibu/Saudara/i
-                    </p>
-                    <p className="text-lg font-semibold transition-colors duration-300 text-rose-500 dark:text-rose-400">
-                      {guestName || "Tamu"}
-                    </p>
-                  </motion.div>
-                )}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 1.1 }}
+                  className="space-y-2"
+                >
+                  <p className="font-serif text-sm italic text-gray-500 transition-colors duration-300 dark:text-gray-400">
+                    Kepada Yth.
+                  </p>
+                  <p className="text-sm font-medium text-gray-600 transition-colors duration-300 dark:text-gray-300">
+                    Bapak/Ibu/Saudara/i
+                  </p>
+                  <p className="text-lg font-semibold transition-colors duration-300 text-rose-500 dark:text-rose-400">
+                    {guestName || "Tamu"}
+                  </p>
+                </motion.div>
               </div>
             </motion.div>
 
