@@ -69,7 +69,7 @@ export default function Location() {
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8 }}
                         viewport={{ once: true }}
-                        className="w-full h-[400px] rounded-2xl overflow-hidden shadow-lg border-8 border-white dark:border-gray-600 transition-colors duration-300"
+                        className="w-full h-[400px] rounded-2xl overflow-hidden shadow-none border-8 border-white dark:border-gray-600 transition-colors duration-300"
                     >
                         <iframe
                             src={config.data.maps_embed}

@@ -149,9 +149,13 @@ export default function Hero() {
                             initial={{ scale: 0.8, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
                             transition={{ delay: 0.6 }}
-                            className="font-serif text-3xl text-transparent sm:text-5xl bg-clip-text bg-gradient-to-r from-rose-600 to-pink-600"
+                            className="font-serif text-2xl text-transparent sm:text-5xl bg-clip-text bg-gradient-to-r from-rose-600 to-pink-600"
                         >
-                            {config.data.groomName} & {config.data.brideName}
+                            {config.data.groomName}
+                            <br />
+                            &
+                            <br />
+                            {config.data.brideName}
                         </motion.h2>
                     </div>
 
