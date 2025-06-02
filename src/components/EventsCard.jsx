@@ -151,15 +151,15 @@ END:VCALENDAR`;
         </div>
         <div className="space-y-3 text-gray-600 transition-colors duration-300 dark:text-gray-300">
           <div className="flex items-center space-x-3">
-            <Calendar className="w-5 h-5 text-rose-500 dark:text-rose-400" />
+            <Calendar className="flex-shrink-0 w-5 h-5 text-rose-500 dark:text-rose-400" />
             <span>{formatEventDate(eventData.date)}</span>
           </div>
           <div className="flex items-center space-x-3">
-            <Clock className="w-5 h-5 text-rose-500 dark:text-rose-400" />
+            <Clock className="flex-shrink-0 w-5 h-5 text-rose-500 dark:text-rose-400" />
             <span>{eventData.startTime} - {eventData.endTime}</span>
           </div>
           <div className="flex items-center space-x-3">
-            <MapPin className="w-5 h-5 text-rose-500 dark:text-rose-400" />
+            <MapPin className="flex-shrink-0 w-5 h-5 text-rose-500 dark:text-rose-400" />
             <span>{eventData.location}</span>
           </div>
         </div>

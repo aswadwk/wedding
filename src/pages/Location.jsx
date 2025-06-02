@@ -34,7 +34,9 @@ export default function Location() {
                         viewport={{ once: true }}
                         className="inline-block font-medium transition-colors duration-300 text-rose-500 dark:text-rose-400"
                     >
-                        Lokasi Acara
+                        <span className="px-4 py-2 text-sm transition-colors duration-300 border rounded-full bg-rose-50 dark:bg-rose-900/30 text-rose-600 dark:text-rose-400 border-rose-200 dark:border-rose-800">
+                            Lokasi Acara
+                        </span>
                     </motion.span>
 
                     <motion.h2
