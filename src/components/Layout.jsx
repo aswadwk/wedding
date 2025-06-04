@@ -2,9 +2,9 @@ import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Music, PauseCircle, PlayCircle } from 'lucide-react';
 import PropTypes from 'prop-types';
-import config from '@/config/config';
-import BottomBar from '@/components/BottomBar';
-import ThemeToggle from '@/components/ui/ThemeToggle';
+import config from '../config/config';
+import BottomBar from './BottomBar';
+import ThemeToggle from './ui/ThemeToggle';
 
 const Layout = ({ children }) => {
   const [isPlaying, setIsPlaying] = useState(false);

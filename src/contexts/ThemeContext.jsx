@@ -5,15 +5,17 @@ export const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
     const [theme, setTheme] = useState(() => {
-        // Check if theme is stored in localStorage
-        const savedTheme = localStorage.getItem('wedding-theme');
-        if (savedTheme) {
-            return savedTheme;
-        }
+        if (typeof window !== 'undefined') {
+            // Check if theme is stored in localStorage
+            const savedTheme = localStorage.getItem('wedding-theme');
+            if (savedTheme) {
+                return savedTheme;
+            }
 
-        // Check system preference
-        if (typeof window !== 'undefined' && window.matchMedia) {
-            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            // Check system preference
+            if (window.matchMedia) {
+                return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            }
         }
 
         return 'light';

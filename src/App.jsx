@@ -18,12 +18,14 @@
 import { useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import Layout from '@/components/Layout';
-import MainContent from '@/pages/MainContent';
-import LandingPage from '@/pages/LandingPage';
-import { Helmet, HelmetProvider } from 'react-helmet-async';
+import MainContent from '@/react-pages/MainContent';
+import LandingPage from '@/react-pages/LandingPage';
+import * as HelmetPkg from 'react-helmet-async';
+const { Helmet, HelmetProvider } = HelmetPkg;
 import config from '@/config/config';
-import { Routes, Route } from 'react-router-dom';
-import GenerateInvitation from '@/pages/GenerateInvitation';
+import * as RouterPkg from 'react-router-dom';
+const { Routes, Route } = RouterPkg;
+import GenerateInvitation from '@/react-pages/GenerateInvitation';
 import { ThemeProvider } from '@/contexts/ThemeContext';
 
 /**

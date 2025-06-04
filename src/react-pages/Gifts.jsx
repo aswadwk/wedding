@@ -1,4 +1,4 @@
-import config from '@/config/config';
+import config from '../config/config';
 import { motion } from 'framer-motion'
 import {
     Copy,

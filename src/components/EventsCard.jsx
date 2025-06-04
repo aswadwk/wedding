@@ -11,7 +11,7 @@ import {
   Apple,
   Calendar as CalendarIcon
 } from 'lucide-react';
-import { formatEventDate } from '@/lib/formatEventDate';
+import { formatEventDate } from '../lib/formatEventDate';
 import PropTypes from 'prop-types';
 
 const Modal = ({ isOpen, onClose, children }) => {
@@ -95,7 +95,7 @@ const SingleEventCard = ({ eventData }) => {
       return date.toISOString().replace(/-|:|\.\d+/g, '');
     };
 
-    return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(eventData.title)}&dates=${formatDate(startDate)}/${formatDate(endDate)}&details=${encodeURIComponent(eventData.description)}&location=${encodeURIComponent(eventData.location)}&ctz=${eventData.timeZone}`;
+    return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(eventData.title)}&dates=${formatDate(startDate)}/${formatDate(endDate)}&details=${encodeURIComponent(eventData.description || eventData.title)}&location=${encodeURIComponent(eventData.location)}&ctz=${eventData.timeZone || 'Asia/Makassar'}`;
   };
 
   const generateICSContent = () => {
@@ -113,7 +113,7 @@ URL:${window.location.href}
 DTSTART:${formatICSDate(startDate)}
 DTEND:${formatICSDate(endDate)}
 SUMMARY:${eventData.title}
-DESCRIPTION:${eventData.description}
+DESCRIPTION:${eventData.description || eventData.title}
 LOCATION:${eventData.location}
 END:VEVENT
 END:VCALENDAR`;
@@ -238,9 +238,9 @@ SingleEventCard.propTypes = {
     startTime: PropTypes.string.isRequired,
     endTime: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
+    description: PropTypes.string,
     location: PropTypes.string.isRequired,
-    timeZone: PropTypes.string.isRequired,
+    timeZone: PropTypes.string,
   }).isRequired,
 };
 

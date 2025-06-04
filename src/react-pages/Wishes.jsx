@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import Confetti from 'react-confetti';
-import Marquee from "@/components/ui/marquee";
+import Marquee from "../components/ui/marquee";
 import {
     Calendar,
     Clock,
@@ -14,9 +14,9 @@ import {
     HelpCircle,
 } from 'lucide-react'
 import { useEffect, useState } from 'react';
-import { formatEventDate } from '@/lib/formatEventDate';
-import { supabase } from '@/lib/supabase';
-import { safeBase64 } from '@/lib/base64';
+import { formatEventDate } from '../lib/formatEventDate';
+import { supabase } from '../lib/supabase';
+import { safeBase64 } from '../lib/base64';
 
 export default function Wishes() {
     const [showConfetti, setShowConfetti] = useState(false);
@@ -72,14 +72,22 @@ export default function Wishes() {
 
     useEffect(() => {
         const fetchWishes = async () => {
-            const { data, error } = await supabase
-                .from('wishes')
-                .select('*')
-                .limit(1000)
-                .order('timestamp', { ascending: false });
-            if (!error && data) {
-                console.log('Fetched wishes:', data);
-                setWishes(data);
+            try {
+                const { data, error } = await supabase
+                    .from('wishes')
+                    .select('*')
+                    .limit(1000)
+                    .order('timestamp', { ascending: false });
+                if (!error && data) {
+                    console.log('Fetched wishes:', data);
+                    setWishes(data);
+                } else if (error) {
+                    console.log('Supabase not configured or error fetching wishes:', error);
+                    // Keep default wishes if Supabase is not configured
+                }
+            } catch (err) {
+                console.log('Error connecting to Supabase:', err);
+                // Keep default wishes if there's a connection error
             }
         };
         fetchWishes();
@@ -90,29 +98,40 @@ export default function Wishes() {
         if (!newWish.trim() || !name.trim() || !attendance) return;
 
         setIsSubmitting(true);
-        const { data, error } = await supabase.from('wishes').insert([
-            {
-                name,
-                message: newWish,
-                attending: attendance,
-                timestamp: new Date().toISOString(),
-            },
-        ]).select();
-        if (error) {
-            alert('Gagal mengirim ucapan.');
+        try {
+            const { data, error } = await supabase.from('wishes').insert([
+                {
+                    name,
+                    message: newWish,
+                    attending: attendance,
+                    timestamp: new Date().toISOString(),
+                },
+            ]).select();
+
+            if (error) {
+                console.log('Error submitting wish:', error);
+                alert('Gagal mengirim ucapan. Database tidak tersedia.');
+                setIsSubmitting(false);
+                return;
+            }
+
+            if (data?.[0]) {
+                setWishes(prev => [data[0], ...prev]);
+            }
+
+            setNewWish('');
+            setName('');
+            setAttendance('');
             setIsSubmitting(false);
-            return;
+            setShowConfetti(true);
+            setTimeout(() => setShowConfetti(false), 3000);
+        } catch (err) {
+            console.log('Error connecting to database:', err);
+            alert('Gagal mengirim ucapan. Database tidak tersedia.');
+            setIsSubmitting(false);
         }
-        if (data?.[0]) {
-            setWishes(prev => [data[0], ...prev]);
-        }
-        setNewWish('');
-        setName('');
-        setAttendance('');
-        setIsSubmitting(false);
-        setShowConfetti(true);
-        setTimeout(() => setShowConfetti(false), 3000);
     };
+
     const getAttendanceIcon = (status) => {
         switch (status) {
             case 'attending':
@@ -182,7 +201,6 @@ export default function Wishes() {
                 <div className="max-w-2xl mx-auto space-y-6">
                     <AnimatePresence>
                         <Marquee speed={20}
-                            gradient={false}
                             className="[--duration:20s] py-2">
                             {wishes.map((wish, index) => (
                                 <motion.div

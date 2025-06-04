@@ -1,7 +1,7 @@
-import config from "@/config/config";
+import config from "../config/config";
 import { Clock, MapPin, CalendarCheck, ExternalLink } from 'lucide-react'
 import { motion } from 'framer-motion';
-import { formatEventDate } from "@/lib/formatEventDate";
+import { formatEventDate } from "../lib/formatEventDate";
 
 export default function Location() {
     return (<>

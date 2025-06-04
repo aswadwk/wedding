@@ -1,6 +1,6 @@
-import Events from '@/pages/Events'
-import Location from '@/pages/Location';
-import Gifts from '@/pages/Gifts';
+import Events from './Events';
+import Location from './Location';
+import Gifts from './Gifts';
 import Couple from './Couple';
 import Wishes from './Wishes';
 

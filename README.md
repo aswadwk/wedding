@@ -2,7 +2,7 @@
 
 ![Preview](public/preview.png)
 
-A modern, interactive wedding invitation website built with Vite (React), Tailwind CSS, and Framer Motion. Created by [@mrofisr](https://github.com/mrofisr).
+A modern, interactive wedding invitation website built with Astro, React, Tailwind CSS, and Framer Motion. Created by [@mrofisr](https://github.com/mrofisr).
 
 ## Features
 
@@ -16,7 +16,9 @@ A modern, interactive wedding invitation website built with Vite (React), Tailwi
 
 ## Tech Stack
 
-- [Vite (React)](https://vite.dev/)
+- [Astro](https://astro.build/)
+- [@astrojs/react](https://docs.astro.build/en/guides/integrations-guide/react/)
+- [@astrojs/tailwind](https://docs.astro.build/en/guides/integrations-guide/tailwind/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Framer Motion](https://www.framer.com/motion/)
 - [Lucide Icons](https://lucide.dev/)
@@ -26,18 +28,25 @@ A modern, interactive wedding invitation website built with Vite (React), Tailwi
 
 1. Clone the repository and install dependencies:
 
-```bash
-git clone https://github.com/mrofisr/wedding-invitation.git
-cd wedding-invitation
-bun install
-```
+   ```bash
+   git clone https://github.com/mrofisr/wedding-invitation.git
+   cd wedding-invitation
+   bun install
+   ```
 
-2. Update your wedding details in `src/config.js`.
-3. Start the development server:
+2. Install Astro and its integrations:
 
-```bash
-bun run dev
-```
+   ```bash
+   bun add -d astro @astrojs/react @astrojs/tailwind
+   ```
+
+3. Update your wedding details in `src/config.js`.
+
+4. Start the development server:
+
+   ```bash
+   bun run dev
+   ```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
 

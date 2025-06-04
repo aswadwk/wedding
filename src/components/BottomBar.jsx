@@ -8,7 +8,7 @@ import {
   Gift,
   MessageCircleHeart
 } from 'lucide-react';
-import { cn } from "@/lib/utils";
+import { cn } from "../lib/utils";
 
 const menuItems = [
   { icon: Home, label: 'Beranda', href: '#home' },
