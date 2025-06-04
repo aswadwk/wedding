@@ -4,6 +4,7 @@ const config = {
     description:
       import.meta.env.VITE_DESCRIPTION || "Kami akan menikah dan mengundang Anda untuk turut merayakan momen istimewa ini.",
     groomName: "Hajar Aswad",
+    url: import.meta.env.VITE_URL || "Hajar Aswad",
     brideName: "Puspa Permatasari",
     parentGroom: "Putra Sulung dari Bapak Wakka & Ibu Subayani",
     parentBride: "Putri Bungsu dari Bapak Dalle' & Ibu Mince",
