@@ -43,7 +43,7 @@ const LandingPage = ({ onOpenInvitation }) => {
       <div className="absolute bottom-0 left-0 w-64 h-64 -translate-x-1/2 translate-y-1/2 rounded-full md:w-96 md:h-96 bg-pink-100/20 dark:bg-pink-900/20 blur-3xl" />
 
       {/* Main Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4">
+      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 py-4">
         <motion.div
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -67,7 +67,7 @@ const LandingPage = ({ onOpenInvitation }) => {
               className="mb-6 text-center sm:mb-8"
             >
               <div className="space-y-3">
-                <h1 className="font-serif text-3xl leading-tight text-gray-800 transition-colors duration-300 sm:text-4xl md:text-5xl dark:text-gray-100">
+                <h1 className="font-serif text-2xl leading-tight text-gray-800 transition-colors duration-300 sm:text-3xl md:text-4xl dark:text-gray-100">
                   {config.data.groomName}
                   <br />
                   <span className="mx-2 text-rose-400 sm:mx-3">&</span>

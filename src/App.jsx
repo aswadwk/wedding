@@ -61,13 +61,9 @@ function App() {
           <meta property="og:title" content={config.data.title} />
           <meta property="og:description" content={config.data.description} />
           {/* <meta property="og:image" content="https://my-wedding-sooty.vercel.app/images/og-image.jpg" /> */}
-          <meta property="og:image" content={`${config.data.url}/images/og-image.jpg`} />
-          <meta property="og:image:width" content="1200" />
-          <meta property="og:image:height" content="630" />
-          <meta property="og:image:type" content="image/jpeg" />
+          {/* <meta property="og:image" content={`${config.data.url}/images/og-image.jpg`} /> */}
+          <meta property="og:image:url" content={`${config.data.url}/images/og-image.jpg`} />
           <meta property="og:image:alt" content={`${config.data.groomName} & ${config.data.brideName} Wedding Invitation`} />
-          <meta property="og:site_name" content={config.data.title} />
-          <meta property="og:locale" content="id_ID" />
 
           {/* Twitter */}
           <meta property="twitter:card" content="summary_large_image" />
