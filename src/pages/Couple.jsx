@@ -109,22 +109,45 @@ export default function Couple() {
                         transition={{ duration: 0.8, delay: 1 }}
                         className="order-1 space-y-8 text-center lg:order-2"
                     >
-                        {/* Groom Info */}
+                        {/* Groom Photo & Info */}
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 1.2 }}
-                            className="space-y-3"
+                            className="space-y-6"
                         >
-                            <h3 className="font-serif text-4xl font-bold text-gray-800 sm:text-5xl dark:text-gray-100">
-                                {config.data.groomName}
-                            </h3>
-                            <p className="text-lg font-light text-gray-600 dark:text-gray-400">
-                                Calon Mempelai Pria
-                            </p>
-                            <p className="text-sm italic text-gray-500 dark:text-gray-500">
-                                {config.data.parentGroom}
-                            </p>
+                            {/* Groom Photo */}
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ delay: 1.3 }}
+                                className="relative w-40 h-40 mx-auto sm:w-48 sm:h-48"
+                            >
+                                <div className="absolute inset-0 p-1 rounded-full shadow-xl bg-gradient-to-br from-blue-100 via-blue-200 to-blue-300">
+                                    <div className="w-full h-full overflow-hidden bg-white rounded-full dark:bg-gray-100">
+                                        <img
+                                            src="/images/man-min.png"
+                                            alt={config.data.groomName}
+                                            className="object-cover w-full h-full"
+                                        />
+                                    </div>
+                                </div>
+                                {/* Subtle decorative ring */}
+                                <div className="absolute border border-blue-200 rounded-full -inset-2 opacity-30" />
+                            </motion.div>
+
+                            {/* Groom Info */}
+                            <div className="space-y-3">
+                                <h3 className="font-serif text-4xl font-bold text-gray-800 sm:text-5xl dark:text-gray-100">
+                                    {config.data.groomName}
+                                </h3>
+                                <p className="text-lg font-light text-gray-600 dark:text-gray-400">
+                                    Calon Mempelai Pria
+                                </p>
+                                <p className="text-sm italic text-gray-500 dark:text-gray-500">
+                                    {config.data.parentGroom}
+                                </p>
+                            </div>
                         </motion.div>
 
                         {/* Heart Connector */}
@@ -153,22 +176,45 @@ export default function Couple() {
                             </div>
                         </motion.div>
 
-                        {/* Bride Info */}
+                        {/* Bride Photo & Info */}
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 1.6 }}
-                            className="space-y-3"
+                            className="space-y-6"
                         >
-                            <h3 className="font-serif text-4xl font-bold text-gray-800 sm:text-5xl dark:text-gray-100">
-                                {config.data.brideName}
-                            </h3>
-                            <p className="text-lg font-light text-gray-600 dark:text-gray-400">
-                                Calon Mempelai Wanita
-                            </p>
-                            <p className="text-sm italic text-gray-500 dark:text-gray-500">
-                                {config.data.parentBride}
-                            </p>
+                            {/* Bride Photo */}
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ delay: 1.7 }}
+                                className="relative w-40 h-40 mx-auto sm:w-48 sm:h-48"
+                            >
+                                <div className="absolute inset-0 p-1 rounded-full shadow-xl bg-gradient-to-br from-rose-100 via-pink-200 to-rose-300">
+                                    <div className="w-full h-full overflow-hidden bg-white rounded-full dark:bg-gray-100">
+                                        <img
+                                            src="/images/women-min.png"
+                                            alt={config.data.brideName}
+                                            className="object-cover w-full h-full"
+                                        />
+                                    </div>
+                                </div>
+                                {/* Subtle decorative ring */}
+                                <div className="absolute border rounded-full border-rose-200 -inset-2 opacity-30" />
+                            </motion.div>
+
+                            {/* Bride Info */}
+                            <div className="space-y-3">
+                                <h3 className="font-serif text-4xl font-bold text-gray-800 sm:text-5xl dark:text-gray-100">
+                                    {config.data.brideName}
+                                </h3>
+                                <p className="text-lg font-light text-gray-600 dark:text-gray-400">
+                                    Calon Mempelai Wanita
+                                </p>
+                                <p className="text-sm italic text-gray-500 dark:text-gray-500">
+                                    {config.data.parentBride}
+                                </p>
+                            </div>
                         </motion.div>
                     </motion.div>
                 </div>
