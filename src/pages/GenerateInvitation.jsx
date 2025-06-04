@@ -36,7 +36,7 @@ export default function GenerateInvitation() {
             let message = `Yth. Bapak/Ibu/Saudara/i\n${name}\nDi Tempat\n-----------\n\n`;
             message += `Dengan segala kerendahan hati, kami mengundang Bapak/Ibu/Saudara/i dan teman-teman untuk menghadiri acara,\n\n`;
             message += `===========\n`;
-            message += `The Wedding Of ${config.data.groomName} & ${config.data.brideName}\n`;
+            message += `The Wedding Of \n${config.data.groomName} & ${config.data.brideName}\n`;
             message += `===========\n\n`;
 
             // Add agenda details from config
