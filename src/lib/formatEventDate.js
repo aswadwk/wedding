@@ -23,19 +23,16 @@ export const formatEventDate = (isoString, format = 'full') => {
             year: 'numeric',
             month: 'long',
             day: 'numeric',
-            timeZone: 'Asia/Jakarta'
         },
         short: {
             day: 'numeric',
             month: 'long',
             year: 'numeric',
-            timeZone: 'Asia/Jakarta'
         },
         time: {
             hour: '2-digit',
             minute: '2-digit',
             hour12: false,
-            timeZone: 'Asia/Jakarta'
         }
     };
 
