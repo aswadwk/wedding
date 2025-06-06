@@ -178,6 +178,35 @@ export default function Wishes() {
                     </motion.div>
                 </motion.div>
 
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
+                    className="mb-8 text-center"
+                >
+                    <motion.h2
+                        initial={{ scale: 0.8, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        transition={{ delay: 0.4 }}
+                        className="pb-4 mb-4 font-serif text-2xl text-transparent sm:text-2xl bg-clip-text bg-gradient-to-r from-rose-600 to-pink-600"
+                    >
+                        بَارَكَ اللهُ لَكُمَا وَبَارَكَ عَلَيْكُمَا
+                        <br />
+                        وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ
+                    </motion.h2>
+
+                    <motion.p
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.6 }}
+                        className="max-w-2xl mx-auto text-base italic font-light text-gray-500 transition-colors duration-300 dark:text-gray-400 sm:text-lg"
+                    >
+                        &ldquo;Semoga Allah memberkahimu, baik dalam kebahagiaan maupun kesusahan, dan semoga Allah menyatukan kalian berdua dalam kebaikan.&rdquo;
+                        <br />
+                        <span className="text-sm font-medium text-rose-500 dark:text-rose-400">- HR. Abu Daud, no. 2130 -</span>
+                    </motion.p>
+                </motion.div>
+
                 {/* Wishes List */}
                 <div className="max-w-2xl mx-auto space-y-6">
                     <AnimatePresence>

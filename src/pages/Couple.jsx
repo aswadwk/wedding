@@ -66,26 +66,15 @@ export default function Couple() {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
-                    className="mb-16 text-center"
+                    className="mb-8 text-center"
                 >
-                    <motion.div
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        transition={{ delay: 0.2 }}
-                        className="inline-block mx-auto mb-6"
-                    >
-                        <span className="px-4 py-2 text-sm transition-colors duration-300 border rounded-full bg-rose-50 dark:bg-rose-900/30 text-rose-600 dark:text-rose-400 border-rose-200 dark:border-rose-800">
-                            ✨ Calon Pengantin ✨
-                        </span>
-                    </motion.div>
-
                     <motion.h2
                         initial={{ scale: 0.8, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                         transition={{ delay: 0.4 }}
-                        className="mb-4 font-serif text-3xl text-transparent sm:text-5xl bg-clip-text bg-gradient-to-r from-rose-600 to-pink-600"
+                        className="pb-4 mb-4 font-serif text-2xl text-transparent sm:text-4xl bg-clip-text bg-gradient-to-r from-rose-600 to-pink-600"
                     >
-                        Mengenal Lebih Dekat
+                        بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ
                     </motion.h2>
 
                     <motion.p
@@ -102,6 +91,16 @@ export default function Couple() {
 
                 {/* Main Content Grid */}
                 <div className="grid items-center grid-cols-1 gap-8 lg:gap-12">
+                    <motion.div
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        transition={{ delay: 0.2 }}
+                        className="inline-block mx-auto mb-6"
+                    >
+                        <span className="px-4 py-2 text-sm transition-colors duration-300 border rounded-full bg-rose-50 dark:bg-rose-900/30 text-rose-600 dark:text-rose-400 border-rose-200 dark:border-rose-800">
+                            ✨ Calon Pengantin ✨
+                        </span>
+                    </motion.div>
                     {/* Content Section */}
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
