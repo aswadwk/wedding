@@ -40,11 +40,19 @@ const config = {
         endTime: "14.30 WITA",
         location: "Dusun Kalaciri, Desa Potokullin, Kec. Buntu Batu, Kab. Enrekang (Kediaman mempelai Perempuan)",
         address: import.meta.env.VITE_AGENDA2_ADDRESS || "Jl. Jend. Sudirman No.1, Jakarta",
+      },
+      {
+        title: "Resepsi Pernikahan",
+        date: "Ahad, 15 Juni 2025",
+        startTime: "16.00",
+        endTime: "22.00 WITA",
+        location: "Dusun Madata, Desa Lunjen, Kec. Buntu Batu, Kab. Enrekang (Kediaman mempelai Perempuan)",
+        address: import.meta.env.VITE_AGENDA2_ADDRESS || "Jl. Jend. Sudirman No.1, Jakarta",
       }
     ],
     audio: {
-      src: import.meta.env.VITE_AUDIO_SRC || "/audio/fulfilling-humming.mp3",
-      title: import.meta.env.VITE_AUDIO_TITLE || "Fulfilling Humming",
+      src: import.meta.env.VITE_AUDIO_SRC || "/audio/nasheed-audio.m4a",
+      title: import.meta.env.VITE_AUDIO_TITLE || "Nasheed",
       autoplay: import.meta.env.VITE_AUDIO_AUTOPLAY !== "false",
       loop: import.meta.env.VITE_AUDIO_LOOP !== "false"
     },
