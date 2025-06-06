@@ -68,11 +68,12 @@ export default function Couple() {
                     transition={{ duration: 0.8 }}
                     className="mb-8 text-center"
                 >
+
                     <motion.h2
                         initial={{ scale: 0.8, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                         transition={{ delay: 0.4 }}
-                        className="pb-4 mb-4 font-serif text-2xl text-transparent sm:text-4xl bg-clip-text bg-gradient-to-r from-rose-600 to-pink-600"
+                        className="pb-4 mb-4 font-serif text-2xl text-transparent sm:text-4xl bg-clip-text bg-gradient-to-r from-rose-600 to-pink-600 "
                     >
                         بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ
                     </motion.h2>
@@ -120,19 +121,32 @@ export default function Couple() {
                                 initial={{ opacity: 0, scale: 0.8 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 transition={{ delay: 1.3 }}
-                                className="relative w-40 h-40 mx-auto sm:w-48 sm:h-48"
+                                className="relative mx-auto w-44 h-44 sm:w-52 sm:h-52"
                             >
-                                <div className="absolute inset-0 p-1 rounded-full shadow-xl bg-gradient-to-br from-blue-100 via-blue-200 to-blue-300">
-                                    <div className="w-full h-full overflow-hidden bg-white rounded-full dark:bg-gray-100">
+                                {/* Outer decorative ring with glow */}
+                                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-200 via-blue-300 to-blue-400 p-1.5 shadow-2xl"
+                                    style={{
+                                        filter: 'drop-shadow(0 0 20px rgba(59, 130, 246, 0.3))',
+                                    }}
+                                >
+                                    {/* Inner ring */}
+                                    <div className="relative w-full h-full overflow-hidden bg-white rounded-full shadow-inner dark:bg-gray-100">
                                         <img
                                             src="/images/man-min.png"
                                             alt={config.data.groomName}
                                             className="object-cover w-full h-full"
                                         />
+                                        {/* Overlay gradient */}
+                                        <div className="absolute inset-0 bg-gradient-to-t from-blue-900/10 via-transparent to-transparent"></div>
                                     </div>
                                 </div>
-                                {/* Subtle decorative ring */}
-                                <div className="absolute border border-blue-200 rounded-full -inset-2 opacity-30" />
+
+                                {/* Floating decorative elements */}
+                                <div className="absolute w-6 h-6 rounded-full shadow-lg -top-2 -right-2 bg-gradient-to-br from-blue-400 to-blue-600 animate-pulse"></div>
+                                <div className="absolute w-4 h-4 delay-1000 rounded-full shadow-md -bottom-2 -left-2 bg-gradient-to-br from-blue-300 to-blue-500 animate-pulse"></div>
+
+                                {/* Subtle outer glow ring */}
+                                <div className="absolute border rounded-full border-blue-300/40 -inset-3 animate-pulse" />
                             </motion.div>
 
                             {/* Groom Info */}
@@ -143,7 +157,7 @@ export default function Couple() {
                                 <p className="text-lg font-light text-gray-600 dark:text-gray-400">
                                     Calon Mempelai Pria
                                 </p>
-                                <p className="text-sm italic text-gray-500 dark:text-gray-500">
+                                <p className="text-sm italic text-gray-600 dark:text-gray-400">
                                     {config.data.parentGroom}
                                 </p>
                             </div>
@@ -187,19 +201,32 @@ export default function Couple() {
                                 initial={{ opacity: 0, scale: 0.8 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 transition={{ delay: 1.7 }}
-                                className="relative w-40 h-40 mx-auto sm:w-48 sm:h-48"
+                                className="relative mx-auto w-44 h-44 sm:w-52 sm:h-52"
                             >
-                                <div className="absolute inset-0 p-1 rounded-full shadow-xl bg-gradient-to-br from-rose-100 via-pink-200 to-rose-300">
-                                    <div className="w-full h-full overflow-hidden bg-white rounded-full dark:bg-gray-100">
+                                {/* Outer decorative ring with glow */}
+                                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-rose-200 via-pink-300 to-rose-400 p-1.5 shadow-2xl"
+                                    style={{
+                                        filter: 'drop-shadow(0 0 20px rgba(244, 63, 94, 0.3))',
+                                    }}
+                                >
+                                    {/* Inner ring */}
+                                    <div className="relative w-full h-full overflow-hidden bg-white rounded-full shadow-inner dark:bg-gray-100">
                                         <img
                                             src="/images/women-min.png"
                                             alt={config.data.brideName}
                                             className="object-cover w-full h-full"
                                         />
+                                        {/* Overlay gradient */}
+                                        <div className="absolute inset-0 bg-gradient-to-t from-rose-900/10 via-transparent to-transparent"></div>
                                     </div>
                                 </div>
-                                {/* Subtle decorative ring */}
-                                <div className="absolute border rounded-full border-rose-200 -inset-2 opacity-30" />
+
+                                {/* Floating decorative elements */}
+                                <div className="absolute w-6 h-6 rounded-full shadow-lg -top-2 -right-2 bg-gradient-to-br from-rose-400 to-pink-600 animate-pulse"></div>
+                                <div className="absolute w-4 h-4 delay-1000 rounded-full shadow-md -bottom-2 -left-2 bg-gradient-to-br from-pink-300 to-rose-500 animate-pulse"></div>
+
+                                {/* Subtle outer glow ring */}
+                                <div className="absolute border rounded-full border-rose-300/40 -inset-3 animate-pulse" />
                             </motion.div>
 
                             {/* Bride Info */}
@@ -210,7 +237,7 @@ export default function Couple() {
                                 <p className="text-lg font-light text-gray-600 dark:text-gray-400">
                                     Calon Mempelai Wanita
                                 </p>
-                                <p className="text-sm italic text-gray-500 dark:text-gray-500">
+                                <p className="text-sm italic text-gray-600 dark:text-gray-400">
                                     {config.data.parentBride}
                                 </p>
                             </div>
@@ -226,9 +253,11 @@ export default function Couple() {
                     className="mt-16 text-center"
                 >
                     <div className="max-w-2xl mx-auto">
-                        <p className="mb-4 font-serif text-lg italic text-gray-600 sm:text-xl dark:text-gray-300">
-                            &ldquo;Dengan mengucap nama Allah yang Maha Pengasih lagi Maha Penyayang, kami bermaksud menyelenggarakan resepsi pernikahan putra-putri kami&rdquo;
-                        </p>
+                        <div className="p-6 transition-colors duration-300 border shadow-xl backdrop-blur-sm bg-white/50 dark:bg-gray-800/50 sm:p-8 md:p-10 rounded-2xl border-rose-100/50 dark:border-gray-700/50">
+                            <p className="mb-4 font-serif text-lg italic text-gray-600 sm:text-xl dark:text-gray-300">
+                                &ldquo;Dengan mengucap nama Allah yang Maha Pengasih lagi Maha Penyayang, kami bermaksud menyelenggarakan resepsi pernikahan putra-putri kami&rdquo;
+                            </p>
+                        </div>
                         <div className="flex items-center justify-center gap-3">
                             <div className="w-12 h-px bg-rose-300 dark:bg-rose-600" />
                             <div className="w-3 h-3 rounded-full bg-rose-300 dark:bg-rose-600" />
