@@ -103,7 +103,7 @@ export default function GenerateInvitation() {
                         <label htmlFor="guestNames" className="block mb-2 font-medium text-gray-700">Daftar Nama Tamu:</label>
                         <textarea
                             id="guestNames"
-                            className="w-full h-32 p-3 border border-gray-200 rounded-lg focus:ring-rose-200 focus:border-rose-400"
+                            className="w-full h-32 p-3 border border-gray-200 rounded-lg focus:ring-rose-200 focus:border-rose-400 dark:bg-gray-800 dark:text-gray-200 dark:border-gray-700"
                             value={guestNames}
                             onChange={e => setGuestNames(e.target.value)}
                             placeholder="Masukkan nama tamu, satu nama per baris. Contoh:&#10;John Doe&#10;Jane Smith&#10;Ahmad Rizki"
@@ -171,7 +171,7 @@ export default function GenerateInvitation() {
                                         </button>
 
                                         {expandedMessages[name] && (
-                                            <div className="p-3 mt-2 text-sm whitespace-pre-wrap bg-white border rounded">
+                                            <div className="p-3 mt-2 text-sm whitespace-pre-wrap bg-white border rounded dark:bg-gray-800 dark:text-gray-200">
                                                 {message}
                                             </div>
                                         )}

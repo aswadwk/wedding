@@ -154,9 +154,6 @@ export default function Couple() {
                                 <h3 className="font-serif text-4xl font-bold text-gray-800 sm:text-5xl dark:text-gray-100">
                                     {config.data.groomName}
                                 </h3>
-                                <p className="text-lg font-light text-gray-600 dark:text-gray-400">
-                                    Calon Mempelai Pria
-                                </p>
                                 <p className="text-sm italic text-gray-600 dark:text-gray-400">
                                     {config.data.parentGroom}
                                 </p>
@@ -234,9 +231,6 @@ export default function Couple() {
                                 <h3 className="font-serif text-4xl font-bold text-gray-800 sm:text-5xl dark:text-gray-100">
                                     {config.data.brideName}
                                 </h3>
-                                <p className="text-lg font-light text-gray-600 dark:text-gray-400">
-                                    Calon Mempelai Wanita
-                                </p>
                                 <p className="text-sm italic text-gray-600 dark:text-gray-400">
                                     {config.data.parentBride}
                                 </p>
