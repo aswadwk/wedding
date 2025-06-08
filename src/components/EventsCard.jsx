@@ -88,10 +88,14 @@ const SingleEventCard = ({ eventData }) => {
   const [showCalendarModal, setShowCalendarModal] = useState(false);
 
   const googleCalendarLink = () => {
-    const startDate = new Date(`${eventData.date}T${eventData.startTime}:00`);
-    const endDate = new Date(`${eventData.date}T${eventData.endTime}:00`);
+    const startTime = eventData.startTime.replace(/\./g, ':');
+    const endTime = eventData.endTime.replace(/\./g, ':');
+
+    const startDate = new Date(`${eventData.localDateString}T${startTime}:00`);
+    const endDate = new Date(`${eventData.localDateString}T${endTime}:00`);
 
     const formatDate = (date) => {
+
       return date.toISOString().replace(/-|:|\.\d+/g, '');
     };
 
@@ -99,8 +103,11 @@ const SingleEventCard = ({ eventData }) => {
   };
 
   const generateICSContent = () => {
-    const startDate = new Date(`${eventData.date}T${eventData.startTime}:00`);
-    const endDate = new Date(`${eventData.date}T${eventData.endTime}:00`);
+    const startTime = eventData.startTime.replace(/\./g, ':');
+    const endTime = eventData.endTime.replace(/\./g, ':');
+
+    const startDate = new Date(`${eventData.localDateString}T${startTime}:00`);
+    const endDate = new Date(`${eventData.localDateString}T${endTime}:00`);
 
     const formatICSDate = (date) => {
       return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
@@ -156,7 +163,7 @@ END:VCALENDAR`;
           </div>
           <div className="flex items-center space-x-3">
             <Clock className="flex-shrink-0 w-5 h-5 text-rose-500 dark:text-rose-400" />
-            <span>{eventData.startTime} - {eventData.endTime}</span>
+            <span>{eventData.startTime} - {eventData.endTime} WITA</span>
           </div>
           <div className="flex items-center space-x-3">
             <MapPin className="flex-shrink-0 w-5 h-5 text-rose-500 dark:text-rose-400" />
@@ -241,6 +248,7 @@ SingleEventCard.propTypes = {
     description: PropTypes.string.isRequired,
     location: PropTypes.string.isRequired,
     timeZone: PropTypes.string.isRequired,
+    localDateString: PropTypes.string.isRequired, // Added for local date string
   }).isRequired,
 };
 

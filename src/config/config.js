@@ -21,40 +21,52 @@ const config = {
         title: "Acara Malam",
         date: "Sabtu, 14 Juni 2025",
         startTime: "19.30",
-        endTime: "22.30 WITA",
+        endTime: "22.30",
+        localDateString: "2025-06-14",
         location: "Dusun Kalaciri, Desa Potokullin, Kec. Buntu Batu, Kab. Enrekang (Kediaman mempelai Perempuan)",
         address: import.meta.env.VITE_AGENDA1_ADDRESS || "Jl. Jend. Sudirman No.1, Jakarta",
+        description: "Acara malam sebelum akad nikah di kediaman mempelai perempuan.",
       },
       {
         title: "Akad Nikah",
         date: "Ahad, 15 Juni 2025",
         startTime: "10.00",
         endTime: "Sampai selesai",
+        localDateString: "2025-06-15",
         location: "Dusun Kalaciri, Desa Potokullin, Kec. Buntu Batu, Kab. Enrekang (Kediaman mempelai Perempuan)",
         address: import.meta.env.VITE_AGENDA1_ADDRESS || "Jl. Jend. Sudirman No.1, Jakarta",
+        description: "Acara akad nikah di kediaman mempelai perempuan.",
+        timeZone: "Asia/Makassar"
       },
       {
         title: "Resepsi Pertama",
         date: "Ahad, 15 Juni 2025",
         startTime: "11.00",
-        endTime: "14.30 WITA",
+        endTime: "14.30",
+        localDateString: "2025-06-15",
         location: "Dusun Kalaciri, Desa Potokullin, Kec. Buntu Batu, Kab. Enrekang (Kediaman mempelai Perempuan)",
         address: import.meta.env.VITE_AGENDA2_ADDRESS || "Jl. Jend. Sudirman No.1, Jakarta",
+        description: "Resepsi pertama di kediaman mempelai perempuan.",
+        timeZone: "Asia/Makassar"
       },
       {
         title: "Resepsi Kedua",
         date: "Ahad, 15 Juni 2025",
         startTime: "16.00",
-        endTime: "22.00 WITA",
+        endTime: "22.00",
+        localDateString: "2025-06-15",
         location: "Dusun Madata, Desa Lunjen, Kec. Buntu Batu, Kab. Enrekang (Kediaman mempelai Laki-laki)",
         address: import.meta.env.VITE_AGENDA2_ADDRESS || "Jl. Jend. Sudirman No.1, Jakarta",
+        description: "Resepsi kedua di kediaman mempelai laki-laki.",
+        timeZone: "Asia/Makassar"
       }
     ],
     audio: {
       src: import.meta.env.VITE_AUDIO_SRC || "/audio/nasheed-audio.m4a",
       title: import.meta.env.VITE_AUDIO_TITLE || "Nasheed",
       autoplay: import.meta.env.VITE_AUDIO_AUTOPLAY !== "false",
-      loop: import.meta.env.VITE_AUDIO_LOOP !== "false"
+      loop: import.meta.env.VITE_AUDIO_LOOP !== "false",
+      toastDuration: 3000 // Duration for toast notification in milliseconds
     },
     banks: [
       {
