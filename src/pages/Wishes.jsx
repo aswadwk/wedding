@@ -208,25 +208,26 @@ export default function Wishes() {
                 </motion.div>
 
                 {/* Wishes List */}
-                <div className="max-w-2xl mx-auto space-y-6">
+                <div className="max-w-6xl mx-auto space-y-4">
                     <AnimatePresence>
-                        <Marquee speed={20}
+                        {/* First Row - Moving Right */}
+                        <Marquee
+                            pauseOnHover={true}
                             gradient={false}
-                            className="[--duration:20s] py-2">
-                            {wishes.map((wish, index) => (
+                            className="[--duration:30s] py-2"
+                            reverse={false}
+                        >
+                            {wishes.filter((_, index) => index % 2 === 0).map((wish, index) => (
                                 <motion.div
                                     key={wish.id}
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     exit={{ opacity: 0, y: -20 }}
                                     transition={{ delay: index * 0.1 }}
-                                    className="group relative w-[280px]"
+                                    className="group relative w-[280px] mx-2"
                                 >
-                                    {/* Background gradient */}
-                                    <div className="absolute inset-0 bg-gradient-to-r from-rose-100/50 dark:from-rose-900/20 to-pink-100/50 dark:to-pink-900/20 rounded-xl transform transition-transform group-hover:scale-[1.02] duration-300" />
-
                                     {/* Card content */}
-                                    <div className="relative p-4 transition-colors duration-300 border shadow-md backdrop-blur-sm bg-white/80 dark:bg-gray-800/80 rounded-xl border-rose-100/50 dark:border-gray-700/50">
+                                    <div className="relative p-4 transition-colors duration-300 border shadow-md rounded-xl border-rose-100/50 dark:border-gray-700/50">
                                         {/* Header */}
                                         <div className="flex items-start mb-2 space-x-3">
                                             {/* Avatar */}
@@ -262,6 +263,68 @@ export default function Wishes() {
                                         {Date.now() - new Date(wish.timestamp).getTime() < 3600000 && (
                                             <div className="absolute top-2 right-2">
                                                 <span className="px-2 py-1 text-xs font-medium rounded-full bg-rose-100 text-rose-600">
+                                                    New
+                                                </span>
+                                            </div>
+                                        )}
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </Marquee>
+
+                        {/* Second Row - Moving Left */}
+                        <Marquee
+                            pauseOnHover={true}
+                            gradient={false}
+                            className="[--duration:25s] py-2"
+                            reverse={true}
+                        >
+                            {wishes.filter((_, index) => index % 2 === 1).map((wish, index) => (
+                                <motion.div
+                                    key={wish.id}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: -20 }}
+                                    transition={{ delay: index * 0.1 }}
+                                    className="group relative w-[280px] mx-2"
+                                >
+                                    {/* Card content */}
+                                    <div className="relative p-4 transition-colors duration-300 border shadow-md rounded-xl border-rose-100/50 dark:border-gray-700/50">
+                                        {/* Header */}
+                                        <div className="flex items-start mb-2 space-x-3">
+                                            {/* Avatar */}
+                                            <div className="flex-shrink-0">
+                                                <div className="flex items-center justify-center w-8 h-8 text-sm font-medium text-white rounded-full bg-gradient-to-r from-blue-400 to-purple-400">
+                                                    {wish.name[0].toUpperCase()}
+                                                </div>
+                                            </div>
+
+                                            {/* Name, Time, and Attendance */}
+                                            <div className="flex-1 min-w-0">
+                                                <div className="flex items-center space-x-2">
+                                                    <h4 className="text-sm font-medium text-gray-800 truncate transition-colors duration-300 dark:text-gray-100">
+                                                        {wish.name}
+                                                    </h4>
+                                                    {getAttendanceIcon(wish.attending)}
+                                                </div>
+                                                <div className="flex items-center space-x-1 text-xs text-gray-500 transition-colors duration-300 dark:text-gray-400">
+                                                    <Clock className="w-3 h-3" />
+                                                    <time className="truncate">
+                                                        {formatEventDate(wish.timestamp)}
+                                                    </time>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {/* Message */}
+                                        <p className="mb-2 text-sm leading-relaxed text-gray-600 transition-colors duration-300 dark:text-gray-300 line-clamp-3">
+                                            {wish.message}
+                                        </p>
+
+                                        {/* Optional: Time indicator for recent messages */}
+                                        {Date.now() - new Date(wish.timestamp).getTime() < 3600000 && (
+                                            <div className="absolute top-2 right-2">
+                                                <span className="px-2 py-1 text-xs font-medium text-blue-600 bg-blue-100 rounded-full">
                                                     New
                                                 </span>
                                             </div>

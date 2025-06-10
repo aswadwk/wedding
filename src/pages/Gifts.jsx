@@ -79,8 +79,7 @@ export default function Gifts() {
                             transition={{ delay: 0.2 * index + 0.7 }}
                             className="relative group"
                         >
-                            <div className="absolute inset-0 transition-transform duration-300 transform bg-gradient-to-r from-rose-100/50 dark:from-rose-900/20 to-pink-100/50 dark:to-pink-900/20 rounded-2xl group-hover:scale-105" />
-                            <div className="relative p-6 transition-colors duration-300 border shadow-lg backdrop-blur-sm bg-white/80 dark:bg-gray-800/80 rounded-2xl border-rose-100/50 dark:border-gray-700/50">
+                            <div className="relative p-6 transition-colors duration-300 border shadow-lg rounded-2xl border-rose-100/50 dark:border-gray-700/50">
                                 <div className="flex items-center justify-between">
                                     <div className="flex items-center space-x-4">
                                         <div className="w-12 h-12 p-2 transition-colors duration-300 bg-white rounded-lg shadow-sm dark:bg-gray-700">
