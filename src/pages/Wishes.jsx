@@ -214,7 +214,7 @@ export default function Wishes() {
                         <Marquee
                             pauseOnHover={true}
                             gradient={false}
-                            className="[--duration:30s] py-2"
+                            className="[--duration:80s] py-2"
                             reverse={false}
                         >
                             {wishes.filter((_, index) => index % 2 === 0).map((wish, index) => (
@@ -276,7 +276,7 @@ export default function Wishes() {
                         <Marquee
                             pauseOnHover={true}
                             gradient={false}
-                            className="[--duration:25s] py-2"
+                            className="[--duration:80s] py-2"
                             reverse={true}
                         >
                             {wishes.filter((_, index) => index % 2 === 1).map((wish, index) => (
